@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Api.Tests.Behavior.Features
+namespace Api.Specs.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Api.Tests.Behavior.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class CheckingProductReviewsFeature : object, Xunit.IClassFixture<CheckingProductReviewsFeature.FixtureData>, System.IDisposable
+    public partial class ProductDetailsViewingFeature : object, Xunit.IClassFixture<ProductDetailsViewingFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "CheckingProductReviews.feature"
+#line 1 "ProductDetailsViewing.feature"
 #line hidden
         
-        public CheckingProductReviewsFeature(CheckingProductReviewsFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ProductDetailsViewingFeature(ProductDetailsViewingFeature.FixtureData fixtureData, Api_Specs_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Checking product reviews", "    As a Shopper\r\n    I want to be able to check product reviews\r\n    So that I c" +
-                    "an gather opinions and make informed purchase decision", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Product details viewing", "    As a Shopper\r\n    I want to view a details of products\r\n    So that I can mak" +
+                    "e better purchase decision", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,15 +81,15 @@ namespace Api.Tests.Behavior.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Checking product reviews")]
-        [Xunit.TraitAttribute("FeatureTitle", "Checking product reviews")]
-        [Xunit.TraitAttribute("Description", "Checking product reviews")]
-        public void CheckingProductReviews()
+        [Xunit.SkippableFactAttribute(DisplayName="Succesfully viewing product details")]
+        [Xunit.TraitAttribute("FeatureTitle", "Product details viewing")]
+        [Xunit.TraitAttribute("Description", "Succesfully viewing product details")]
+        public void SuccesfullyViewingProductDetails()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Checking product reviews", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succesfully viewing product details", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -99,14 +99,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
-    testRunner.Given("shopper is on the product details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 8
-    testRunner.When("he navigates to the reviews section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("the shopper is on the Shoppy home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-    testRunner.Then("he can read product reviews", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("he selects specific product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 10
+    testRunner.Then("he should view product details page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -119,12 +119,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                CheckingProductReviewsFeature.FeatureSetup();
+                ProductDetailsViewingFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                CheckingProductReviewsFeature.FeatureTearDown();
+                ProductDetailsViewingFeature.FeatureTearDown();
             }
         }
     }
