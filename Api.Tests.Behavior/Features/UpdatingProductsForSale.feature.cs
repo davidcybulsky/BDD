@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Api.Specs.Features
+namespace Api.Tests.Behavior.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Api.Specs.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class LoginUserToTheShoppyFeature : object, Xunit.IClassFixture<LoginUserToTheShoppyFeature.FixtureData>, System.IDisposable
+    public partial class UpdatingProductsForSaleFeature : object, Xunit.IClassFixture<UpdatingProductsForSaleFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Specs.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "LoggingIn.feature"
+#line 1 "UpdatingProductsForSale.feature"
 #line hidden
         
-        public LoginUserToTheShoppyFeature(LoginUserToTheShoppyFeature.FixtureData fixtureData, Api_Specs_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public UpdatingProductsForSaleFeature(UpdatingProductsForSaleFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,7 +40,8 @@ namespace Api.Specs.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Login user to the Shoppy", "    As a User\r\n    I want to login \r\n    So that I can shop on Shoppy", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Updating products for sale", "    As a user\r\n    I want to update information for my product for sale\r\n    So t" +
+                    "hat I can better manage of the produts I am selling", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -80,15 +81,15 @@ namespace Api.Specs.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="User succesfully login into Shoppy")]
-        [Xunit.TraitAttribute("FeatureTitle", "Login user to the Shoppy")]
-        [Xunit.TraitAttribute("Description", "User succesfully login into Shoppy")]
-        public void UserSuccesfullyLoginIntoShoppy()
+        [Xunit.SkippableFactAttribute(DisplayName="Update products for sale")]
+        [Xunit.TraitAttribute("FeatureTitle", "Updating products for sale")]
+        [Xunit.TraitAttribute("Description", "Update products for sale")]
+        public void UpdateProductsForSale()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User succesfully login into Shoppy", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update products for sale", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -98,17 +99,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 7
+    testRunner.Given("the user is on product mangment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 8
-    testRunner.Given("user is on the Shoppy login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.When("he selects specific product to update", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.When("he enters valid username and password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("he modifies all the information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-    testRunner.And("he clicks login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("he clicks save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
-    testRunner.Then("he should be redirected to the Shoppy home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("he will see updated product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -121,12 +125,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                LoginUserToTheShoppyFeature.FeatureSetup();
+                UpdatingProductsForSaleFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                LoginUserToTheShoppyFeature.FeatureTearDown();
+                UpdatingProductsForSaleFeature.FeatureTearDown();
             }
         }
     }

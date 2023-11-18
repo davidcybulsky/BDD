@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Api.Specs.Features
+namespace Api.Tests.Behavior.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Api.Specs.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class RemovingProductsForSaleFeature : object, Xunit.IClassFixture<RemovingProductsForSaleFeature.FixtureData>, System.IDisposable
+    public partial class CheckingCartFeature : object, Xunit.IClassFixture<CheckingCartFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Specs.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "RemovingProductsForSale.feature"
+#line 1 "CheckingCart.feature"
 #line hidden
         
-        public RemovingProductsForSaleFeature(RemovingProductsForSaleFeature.FixtureData fixtureData, Api_Specs_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public CheckingCartFeature(CheckingCartFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Specs.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Removing products for sale", "    As a user\r\n    I want to be able to remove my products from sale\r\n    So that" +
-                    " I can better manage of products I am selling", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Checking cart", "    As a Shopper\r\n    I want to be able to check my cart\r\n    So that I can see p" +
+                    "roducts that I am going to buy", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Api.Specs.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Adding products for sale")]
-        [Xunit.TraitAttribute("FeatureTitle", "Removing products for sale")]
-        [Xunit.TraitAttribute("Description", "Adding products for sale")]
-        public void AddingProductsForSale()
+        [Xunit.SkippableFactAttribute(DisplayName="Shopper checks the cart")]
+        [Xunit.TraitAttribute("FeatureTitle", "Checking cart")]
+        [Xunit.TraitAttribute("Description", "Shopper checks the cart")]
+        public void ShopperChecksTheCart()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Adding products for sale", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper checks the cart", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,16 +100,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("the user is on the product managment page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("the shopper is on the home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("the user selects specific product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("he clicks \"Cart\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.And("click remove product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 10
-    testRunner.Then("product will be removed from sale", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("he will be navigated to the cart page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -122,12 +119,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                RemovingProductsForSaleFeature.FeatureSetup();
+                CheckingCartFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                RemovingProductsForSaleFeature.FeatureTearDown();
+                CheckingCartFeature.FeatureTearDown();
             }
         }
     }

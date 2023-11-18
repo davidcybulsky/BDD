@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Api.Specs.Features
+namespace Api.Tests.Behavior.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Api.Specs.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class ProductSearchWithSpecificStatesFeature : object, Xunit.IClassFixture<ProductSearchWithSpecificStatesFeature.FixtureData>, System.IDisposable
+    public partial class ProductsViewingFeature : object, Xunit.IClassFixture<ProductsViewingFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Specs.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "ProductSearchWithSpecificStates.feature"
+#line 1 "ProductsViewing.feature"
 #line hidden
         
-        public ProductSearchWithSpecificStatesFeature(ProductSearchWithSpecificStatesFeature.FixtureData fixtureData, Api_Specs_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public ProductsViewingFeature(ProductsViewingFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Specs.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Product Search with Specific States", "    As a Shopper\r\n    I want to research products with specific states (new, used" +
-                    ")\r\n    So that I can find the right items based on my preferences", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Products viewing", "    As a shoper\r\n    I want brows all products \r\n    So that I can make a shoppin" +
+                    "g", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Api.Specs.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Shopper searches for products with specific states")]
-        [Xunit.TraitAttribute("FeatureTitle", "Product Search with Specific States")]
-        [Xunit.TraitAttribute("Description", "Shopper searches for products with specific states")]
-        public void ShopperSearchesForProductsWithSpecificStates()
+        [Xunit.SkippableFactAttribute(DisplayName="Shopper can see products")]
+        [Xunit.TraitAttribute("FeatureTitle", "Products viewing")]
+        [Xunit.TraitAttribute("Description", "Shopper can see products")]
+        public void ShopperCanSeeProducts()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper searches for products with specific states", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shopper can see products", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,13 +100,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 8
-    testRunner.Given("the shopper is on the Shoppy home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("shopper is on the Shoppy home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 9
-    testRunner.When("the shopper selects a specific product state, such as \"new\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("he is succesfully logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-    testRunner.Then("the shopper should only view items with the selected statee", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("he should be see a collection of available products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -119,12 +119,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                ProductSearchWithSpecificStatesFeature.FeatureSetup();
+                ProductsViewingFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                ProductSearchWithSpecificStatesFeature.FeatureTearDown();
+                ProductsViewingFeature.FeatureTearDown();
             }
         }
     }
