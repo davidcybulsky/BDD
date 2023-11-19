@@ -69,9 +69,9 @@ Tutaj powinna być droplista na to na jaki chcemy enclosure pójść, jakiś spo
 
 ## Historyjki 
 **Feature: Logging in** 
-&emsp;As a visitor
-&emsp;I want to be able to log in
-    So that I can purchase tickets and see my tickets
+&emsp;As a visitor  
+&emsp;I want to be able to log in  
+    &emsp;So that I can purchase tickets and see my tickets  
 Scenario: Visitor logs in
     Given the visitor is not logged in
     When he enters correct email and password 
