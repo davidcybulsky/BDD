@@ -14,33 +14,62 @@ Strona startowa, będą tam godziny otwarcia zoo plus jakaś notka, że istnieje
 **/login**
 
 Dwa textfieldy – na email i hasło, przycisk „Login”, labelka „Not an user yet?” i obok przycisk „Sign up”
+
 **/register**
+
 Dwa textfieldy i przycisk „Register”
+
 **/animal**
+
 Tytuł „Animals” i tabelka ze zwierzętami, w tej tabelce jedynie najważniejsze info, jak chce się więcej to można kliknąć
+
 **/animal/{id}**
+
 Po kolei „pole: wartość”, a niżej tabelka z caretakerami jego
+
 **/animal/add**
 
 **/animal/update/{id}**
 
 **/user**
+
 To jest lista użytkowników widoczna tylko dla ADMINA
+
 **/user/{id}**
+
 Tutaj powinno móc się dostać z /user, jeżeli jest się adminem, lub jeżeli zwykłym śmiertelnikiem to z jakiegoś przycisku „Your Account” na navbarze, i jeżeli jesteśmy właśnie tym userem to powinniśmy widzieć swoje bilety (a admin może oczywiście widzieć bilety dowolnego usera)
+
 **/caretaker**
+
 Tabelka z opiekunami
+
 **/caretaker/{id}**
+
 Info o opiekunie plus lista zwierząt
+
 **/caretaker/add**
 
 **/caretaker/update/{id}**
 
 **/species**
+
 Lista gatunków
+
 **/species/{id}**
+
 Lista zwierząt należących do tego gatunku
+
 **/tickets**
+
 To jest widoczne tylko dla ADMINA – po prostu lista wszystkich biletów
+
 **/buy**
+
 Tutaj powinna być droplista na to na jaki chcemy enclosure pójść, jakiś sposób wybierania daty, powinna być wyświetlona wtedy cena, i przycisk „Buy”. I możemy tu się dostać tylko jak jesteśmy zalogowani
+
+## Historyjki 
+
+ 
+voes  
+fea  
+fae
