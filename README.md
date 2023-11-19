@@ -84,6 +84,7 @@ Scenario: Visitor logs in
     &emsp;And he gives instruction to login  
     &emsp;Then he will be logged in  
 
+***#2***  
 **Feature: Signing up**  
      &emsp;As a visitor  
      &emsp;I want to be able to sign up  
@@ -95,6 +96,7 @@ Scenario: Visitor signs up
      &emsp; Then the account will be created  
      &emsp;And visitor will be automatically logged in  
 
+***#3***  
 **Feature: Seeing my tickets**  
     &emsp;As a visitor  
     &emsp;I want to be able to see my tickets  
@@ -104,6 +106,7 @@ Scenario: Visitor checks his tickets
     &emsp;When he gives instruction to see his tickets  
     &emsp;Then his tickets will be displayed  
 
+***#4***  
 **Feature: Seeing the price of a ticket**    
     &emsp;As a visitor  
     &emsp;I want to be able to see a price of the ticket I want to buy  
@@ -114,6 +117,7 @@ Scenario: Visitor checks the price of ticket
     &emsp;And he chooses the day   
     &emsp;Then the price of this specific ticket will be displayed  
 
+***#5***  
 **Feature: Buying a ticket**  
     &emsp;As a visitor  
     &emsp;I want to be able to buy a ticket  
@@ -125,6 +129,7 @@ Scenario: Visitor buys a ticket
     &emsp;When he gives instruction to buy the ticket  
     &emsp;Then the ticket will be added to his account  
 
+***#6***  
 **Feature: Returning a ticket**  
     &emsp;As a visitor  
     &emsp;I want to be able to return a ticket  
@@ -135,6 +140,7 @@ Scenario: Visitor return a ticket
     &emsp;When he gives instruction to return some ticket  
     &emsp;Then this ticket will be removed from his account  
 
+***#7***  
 **Feature: Seeing animals**  
     &emsp;As a user  
     &emsp;I want to be able to see animals that are currently in safari  
@@ -144,6 +150,7 @@ Scenario: User checks animals
     &emsp;When he gives instruction to see animals  
     &emsp;Then animals will be displayed  
 
+***#8***  
 **Feature: Seeing specific animal**  
     &emsp;As a user  
     &emsp;I want to be able to see info about specific animal  
@@ -153,6 +160,7 @@ Scenario: User checks animals
     &emsp;When he gives instruction to see details of specific animal  
     &emsp;Then the information about that animal will be displayed  
 
+***#9***  
 **Feature: Adding an animal**  
     &emsp;As a administrator  
     &emsp;I want to be able to add new animal   
@@ -165,6 +173,7 @@ Scenario: User checks animals
     &emsp;And he gives instruction to add that animal  
     &emsp;Then the animal will be added to list  
 
+***#10***  
 **Feature: Updating an animal**  
     &emsp;As a administrator  
     &emsp;I want to be able to update existing animal   
@@ -177,6 +186,7 @@ Scenario: User checks animals
     &emsp;And he gives instruction to update that animal  
     &emsp;Then the animal will be updated  
 
+***#11***  
 **Feature: Removing an animal**  
     &emsp;As a administrator  
     &emsp;I want to be able to remove animal   
@@ -188,6 +198,7 @@ Scenario: User checks animals
     &emsp;And he agrees that he is sure he wants to do it  
     &emsp;Then the animal will be removed from the list  
 
+***#12***  
 **Feature: Seeing animals of specific species**  
     &emsp;As a user  
     &emsp;I want to be able to see animals of specific species  
@@ -197,6 +208,7 @@ Scenario: User checks animals
     &emsp;When he gives instruction to only see animals of specific species  
     &emsp;Then the list of animals of that species will be displayed  
 
+***#13***  
 **Feature: Seeing caretakers**  
     &emsp;As a user  
     &emsp;I want to be able to see caretakers that currently work on safari  
@@ -206,6 +218,7 @@ Scenario: User checks caretakers
     &emsp;When he gives instruction to see caretakers  
     &emsp;Then caretakers will be displayed  
 
+***#14***  
 **Feature: Seeing specific caretaker**  
     &emsp;As a user  
     &emsp;I want to be able to see info about specific caretaker  
@@ -215,6 +228,7 @@ Scenario: User checks specific caretaker
     &emsp;When he gives instruction to see which animals are taken care of by this caretaker  
     &emsp;Then the information about that caretaker will be displayed  
 
+***#15***  
 **Feature: Adding a caretaker**  
     &emsp;As a administrator  
     &emsp;I want to be able to add new caretaker  
@@ -227,6 +241,7 @@ Scenario: Administrator adds a caretaker
     &emsp;And he gives instruction to add that caretaker  
     &emsp;Then the caretaker will be added to list  
 
+***#16***  
 **Feature: Updating a caretaker**  
     &emsp;As a administrator  
     &emsp;I want to be able to update existing caretaker  
@@ -239,6 +254,7 @@ Scenario: Administrator updates a caretaker
     &emsp;And he gives instruction to update that caretaker  
     &emsp;Then the caretaker will be updated  
 
+***#17***  
 **Feature: Removing a caretaker**  
     &emsp;As a administrator  
     &emsp;I want to be able to remove caretaker  
@@ -249,7 +265,8 @@ Scenario: Administrator removes an animal
     &emsp;When he gives instruction to remove specific caretaker  
     &emsp;And he agrees that he is sure he wants to do it  
     &emsp;Then the caretaker will be removed from the list  
-    
+
+***#18***  
 **Feature: Seeing animals of specific enclosure**  
     &emsp;As a user  
     &emsp;I want to be able to see animals that live in specific enclosure  
@@ -258,7 +275,8 @@ Scenario: User checks animals that live in specific enclosure
     &emsp;Given user sees list of animals  
     &emsp;When he gives instruction to only see animals of specific enclosure  
     &emsp;Then the list of animals of that enclosure will be displayed  
-    
+
+***#19***  
 **Feature: Deleting own account**  
     &emsp;As a visitor  
     &emsp;I want to be able to delete my account  
@@ -270,7 +288,8 @@ Scenario: Visitor deletes account
     &emsp;And he agrees that he is sure he wants to do it  
     &emsp;Then the account is deleted  
     &emsp;And the user is automatically logged out  
-
+    
+***#20***  
 **Feature: Seeing all tickets of all visitors**  
     &emsp;As a administrator  
     &emsp;I want to be able to see all tickets of all visitors  
