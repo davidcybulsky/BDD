@@ -6,9 +6,13 @@
 
 ## Podstrony
 Ogólnie to może i jest ich dużo, ale będą bardzo powtarzalne na zasadzie: w przypadku /animal tabelka ze zwierzętami, a /animal/{id} na górze wartości jego pól, a niżej tabelka z jego caretakerami. Można wiadomo dodawać inne podstrony jak wyjdzie w trakcie że trzeba 
+
 **/zoo**
+
 Strona startowa, będą tam godziny otwarcia zoo plus jakaś notka, że istniejemy od 3 lat i to jest bardzo długo i że mamy kaczki
+
 **/login**
+
 Dwa textfieldy – na email i hasło, przycisk „Login”, labelka „Not an user yet?” i obok przycisk „Sign up”
 **/register**
 Dwa textfieldy i przycisk „Register”
