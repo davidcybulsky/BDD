@@ -71,8 +71,9 @@ Tutaj powinna być droplista na to na jaki chcemy enclosure pójść, jakiś spo
 Są trzy role:  
 **visitor** – osoba mająca na celu odwiedzenie safari, czyli kupno biletu, zalogowanie się itp.  
 **administrator** – osoba która ma dostęp do wszystkiego, czyli jest właścicielem  
-**user** – dowolna osoba, co weszła se na stronę  
+**user** – dowolna osoba, co weszła se na stronę 
 
+***#1***  
 **Feature: Logging in**  
     &emsp;As a visitor  
     &emsp;I want to be able to log in  
