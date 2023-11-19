@@ -68,12 +68,12 @@ To jest widoczne tylko dla ADMINA – po prostu lista wszystkich biletów
 Tutaj powinna być droplista na to na jaki chcemy enclosure pójść, jakiś sposób wybierania daty, powinna być wyświetlona wtedy cena, i przycisk „Buy”. I możemy tu się dostać tylko jak jesteśmy zalogowani
 
 ## Historyjki 
-**Feature: Logging in** 
+**Feature: Logging in**  
 &emsp;As a visitor  
 &emsp;I want to be able to log in  
-    &emsp;So that I can purchase tickets and see my tickets  
-Scenario: Visitor logs in
-    Given the visitor is not logged in
-    When he enters correct email and password 
-    And he gives instruction to login
-    Then he will be logged in
+    &emsp;So that I can purchase tickets and see my tickets   
+Scenario: Visitor logs in  
+    &emsp;Given the visitor is not logged in  
+    &emsp;When he enters correct email and password   
+    &emsp;And he gives instruction to login  
+    &emsp;Then he will be logged in  
