@@ -51,14 +51,6 @@ Info o opiekunie plus lista zwierząt
 
 **/caretaker/update/{id}**
 
-**/species**
-
-Lista gatunków
-
-**/species/{id}**
-
-Lista zwierząt należących do tego gatunku
-
 **/tickets**
 
 To jest widoczne tylko dla ADMINA – po prostu lista wszystkich biletów
