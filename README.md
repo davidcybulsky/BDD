@@ -25,7 +25,7 @@ Tytuł „Animals” i tabelka ze zwierzętami, w tej tabelce jedynie najważnie
 
 **/animal/{id}**
 
-Po kolei „pole: wartość”, a niżej tabelka z caretakerami jego
+Po kolei „pole: wartość”, ~~a niżej tabelka z caretakerami jego~~
 
 **/animal/add**
 
