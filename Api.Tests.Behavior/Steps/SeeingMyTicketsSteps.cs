@@ -5,6 +5,7 @@ using Api.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Tests.Behavior.Steps;
+[Binding]
 public class SeeingMyTicketsSteps
 {
 
@@ -12,8 +13,8 @@ public class SeeingMyTicketsSteps
     private readonly ITicketService _ticketService;
     private readonly IUserService _userService;
     private User _user;
-    private List<AvailableTicket> _availableTicketsResult;
-    private List<AvailableTicket> _availableTickets;
+    private Ticket _boughtTicket;
+    private List<Ticket> _ticketsResult;
 
     public SeeingMyTicketsSteps()
     {
@@ -38,20 +39,62 @@ public class SeeingMyTicketsSteps
     }
 
     [Given(@"visitor bought tickets")]
-    public void GivenVisitorBoughtTickets()
+    public async void GivenVisitorBoughtTickets()
     {
+        await _context.AvailableTickets.AddRangeAsync(new AvailableTicket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 1500,
+                Enclosure = Enclosure.NORTHERN
+            },
+            new AvailableTicket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 2400,
+                Enclosure = Enclosure.SOUTHERN
+            },
+            new AvailableTicket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 1200,
+                Enclosure = Enclosure.EASTERN
+            },
+            new AvailableTicket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 3000,
+                Enclosure = Enclosure.WESTERN
+            });
+        await _context.SaveChangesAsync();
+
+        var ticketList = await _ticketService.GetAvailableTicketsAsync();
+        var choosenTicket = ticketList.First();
+        _boughtTicket = new Ticket()
+        {
+            Id = choosenTicket.Id,
+            Price = choosenTicket.Price,
+            Enclosure = choosenTicket.Enclosure
+        };
+
+        _boughtTicket.Date = DateTime.Now;
+
+        _ = await _ticketService.BuyTicketAsync(_user.Id, _boughtTicket);
     }
 
     [When(@"he gives instruction to see his tickets")]
-    public void WhenHeGivesInstructionToSeeHisTickets()
+    public async void WhenHeGivesInstructionToSeeHisTickets()
     {
-        throw new PendingStepException();
+        _ticketsResult = (List<Ticket>) await _ticketService.GetUsersTicketsAsync(_user.Id);
     }
 
     [Then(@"his tickets will be displayed")]
     public void ThenHisTicketsWillBeDisplayed()
     {
-        throw new PendingStepException();
+        var ticketResult = _ticketsResult.First();
+        ticketResult.Id.Should().NotBe(_boughtTicket.Id);
+        ticketResult.Price.Should().Be(_boughtTicket.Price);
+        ticketResult.Date.Should().Be(_boughtTicket.Date);
+        ticketResult.Enclosure.Should().Be(_boughtTicket.Enclosure);
     }
 
 }

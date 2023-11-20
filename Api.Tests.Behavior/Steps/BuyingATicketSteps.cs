@@ -14,7 +14,7 @@ public class BuyingATicketSteps
     private readonly IUserService _userService;
     private User _user;
     private Ticket _ticketToBuy;
-    private List<Ticket> _userTicketsResult;
+    private Ticket _boughtTicketResult;
 
     public BuyingATicketSteps()
     {
@@ -91,17 +91,16 @@ public class BuyingATicketSteps
     [When(@"he gives instruction to buy the ticket")]
     public async void WhenHeGivesInstructionToBuyTheTicket()
     {
-        _userTicketsResult = (List<Ticket>) await _ticketService.BuyTicketAsync(_user.Id, _ticketToBuy);
+        _boughtTicketResult = await _ticketService.BuyTicketAsync(_user.Id, _ticketToBuy);
     }
 
     [Then(@"the ticket will be added to his account")]
     public void ThenTheTicketWillBeAddedToHisAccount()
     {
-        var boughtTicket = _userTicketsResult.First();
-        boughtTicket.Id.Should().NotBe(_ticketToBuy.Id);
-        boughtTicket.Price.Should().Be(_ticketToBuy.Price);
-        boughtTicket.Date.Should().Be(_ticketToBuy.Date);
-        boughtTicket.Enclosure.Should().Be(_ticketToBuy.Enclosure);
+        _boughtTicketResult.Id.Should().NotBe(_ticketToBuy.Id);
+        _boughtTicketResult.Price.Should().Be(_ticketToBuy.Price);
+        _boughtTicketResult.Date.Should().Be(_ticketToBuy.Date);
+        _boughtTicketResult.Enclosure.Should().Be(_ticketToBuy.Enclosure);
     }
 
 }

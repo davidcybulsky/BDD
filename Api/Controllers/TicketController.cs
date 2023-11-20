@@ -28,10 +28,21 @@ public class TicketController : ControllerBase
         return Ok(tickets);
     }
 
-    [HttpGet]
-    public async Task<ActionResult<ICollection<Ticket>>> PurchaseTicket([FromQuery] Guid userId ,[FromBody] Ticket ticketToBuy)
+    [HttpPost]
+    public async Task<ActionResult<Ticket>> PurchaseTicket([FromQuery] Guid userId ,[FromBody] Ticket ticketToBuy)
     {
-        var tickets = await _ticketService.BuyTicketAsync(userId, ticketToBuy);
+        var ticket = await _ticketService.BuyTicketAsync(userId, ticketToBuy);
+        if(ticket == null)
+        {
+            return NotFound();
+        }
+        return Ok(ticket);
+    }
+
+    [HttpGet("{userId}")]
+    public async Task<ActionResult<ICollection<Ticket>>> GetUsersTickets([FromQuery] Guid userId)
+    {
+        var tickets = await _ticketService.GetUsersTicketsAsync(userId);
         if(tickets == null)
         {
             return NotFound();

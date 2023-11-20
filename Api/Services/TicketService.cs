@@ -18,27 +18,27 @@ public class TicketService : ITicketService
         return await _context.AvailableTickets.ToListAsync();
     }
 
-    public Task<ICollection<Ticket>> GetUsersTicketsAsync(Guid userId)
+    public async Task<ICollection<Ticket>> GetUsersTicketsAsync(Guid userId)
     {
-        throw new NotImplementedException();
+        var user = await _context.Users.Where(u => u.Id == userId).Include(u => u.Tickets).FirstOrDefaultAsync();
+        return user.Tickets.ToList();
     }
 
-    public async Task<ICollection<Ticket>> BuyTicketAsync(Guid userId, Ticket ticket)
+    public async Task<Ticket> BuyTicketAsync(Guid userId, Ticket ticket)
     {
-        await _context.Tickets.AddAsync(new Ticket()
+        var boughtTicket = new Ticket()
         {
             Id = Guid.NewGuid(),
             Date = ticket.Date,
             Price = ticket.Price,
             Enclosure = ticket.Enclosure,
             UserId = userId
-        });
+        };
 
+        await _context.Tickets.AddAsync(boughtTicket);
         await _context.SaveChangesAsync();
 
-        var user = await _context.Users.Where(u => u.Id == userId).Include(u => u.Tickets).FirstOrDefaultAsync();
-
-        return user.Tickets.ToList();
+        return boughtTicket;
     }
 
     public Task<bool> ReturnUsersTicketAsync(Guid userId, Guid ticketId)
