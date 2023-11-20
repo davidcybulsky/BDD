@@ -23,7 +23,7 @@ public class TicketController : ControllerBase
         var tickets = await _ticketService.GetAvailableTicketsAsync();
         if(tickets == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(tickets);
     }
@@ -34,7 +34,7 @@ public class TicketController : ControllerBase
         var ticket = await _ticketService.BuyTicketAsync(userId, ticketToBuy);
         if(ticket == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(ticket);
     }
@@ -45,8 +45,19 @@ public class TicketController : ControllerBase
         var tickets = await _ticketService.GetUsersTicketsAsync(userId);
         if(tickets == null)
         {
-            return NotFound();
+            return BadRequest();
         }
         return Ok(tickets);
+    }
+
+    [HttpDelete("{ticketId}")]
+    public async Task<ActionResult<bool>> ReturnUsersTicketAsync([FromQuery] Guid userId, [FromQuery] Guid ticketId)
+    {
+        var result = await _ticketService.ReturnUsersTicketAsync(userId, ticketId);
+        if(result == null)
+        {
+            return BadRequest();
+        }
+        return NotFound();
     }
 }

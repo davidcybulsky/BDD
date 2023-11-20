@@ -41,8 +41,13 @@ public class TicketService : ITicketService
         return boughtTicket;
     }
 
-    public Task<bool> ReturnUsersTicketAsync(Guid userId, Guid ticketId)
+    public async Task<bool> ReturnUsersTicketAsync(Guid userId, Guid ticketId)
     {
-        throw new NotImplementedException();
+        var ticket = await _context.Tickets.Where(t => t.Id == ticketId).FirstOrDefaultAsync();
+        
+        _context.Tickets.Remove(ticket);
+        await _context.SaveChangesAsync();
+        
+        return true;
     }
 }
