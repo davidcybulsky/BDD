@@ -100,7 +100,7 @@ Scenario: Visitor signs up
 **Feature: Seeing my tickets**  
     &emsp;As a visitor  
     &emsp;I want to be able to see my tickets  
-    &emsp;So that I can see them  
+    &emsp;So that I can see them   
 Scenario: Visitor checks his tickets  
     &emsp;Given the visitor is logged in  
     &emsp;When he gives instruction to see his tickets  
