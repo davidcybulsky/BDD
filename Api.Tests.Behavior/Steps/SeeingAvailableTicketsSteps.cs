@@ -22,12 +22,6 @@ public class SeeingAvailableTicketsSteps
         _ticketService = new TicketService(_context);
     }
 
-    [Given(@"the visitor is logged in")]
-    public void GivenTheVisitorIsLoggedIn()
-    {
-
-    }
-
     [Given(@"tickets are in db")]
     public async void GivenTicketsAreInDb()
     {
@@ -63,7 +57,7 @@ public class SeeingAvailableTicketsSteps
     [When(@"he wants to see available tickets")]
     public async void WhenHeWantsToSeeAvailableTickets()
     {
-        _availableTicketsResult = (List<AvailableTicket>) await _ticketService.GetAvailableTickets();
+        _availableTicketsResult = (List<AvailableTicket>) await _ticketService.GetAvailableTicketsAsync();
     }
 
     [Then(@"he can see the details of each ticket")]
