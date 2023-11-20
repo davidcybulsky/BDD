@@ -4,5 +4,6 @@ Feature: Seeing my tickets
     So that I can see them
 Scenario: Visitor checks his tickets
     Given the visitor is logged in
+    And visitor bought tickets
     When he gives instruction to see his tickets
     Then his tickets will be displayed

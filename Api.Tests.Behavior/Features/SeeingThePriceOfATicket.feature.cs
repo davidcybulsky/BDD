@@ -28,7 +28,7 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Story4.feature"
+#line 1 "SeeingThePriceOfATicket.feature"
 #line hidden
         
         public SeeingThePriceOfATicketFeature(SeeingThePriceOfATicketFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
