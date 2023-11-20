@@ -2,19 +2,23 @@
 using Api.Entities;
 using Api.Interfaces;
 using Api.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api.Tests.Behavior.Steps;
 
 [Binding]
 public class SigningUpSteps
 {
-    private readonly UserService _userService = new UserService(); //needs to be changed to interface TODO
+    private readonly IUserService _userService; //needs to be changed to interface TODO
     private readonly RegisterUserDto _registerUserDto = new RegisterUserDto();
     private User _resultUser;
 
-    public SigningUpSteps(/*IUserService userService*/)
+    public SigningUpSteps()
     {
-        //_userService = userService;
+        var options = new DbContextOptionsBuilder<SafariContext>()
+            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+            .Options;
+        _userService = new UserService(new SafariContext(options));
     }
 
     [Given(@"the visitor has his username, email and password in mind")]

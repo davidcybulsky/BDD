@@ -1,8 +1,9 @@
-﻿namespace Api.Entities;
+﻿using Microsoft.EntityFrameworkCore;
 
-public class SafariContext //: DbContext
+namespace Api.Entities;
+
+public class SafariContext : DbContext
 {
-    /*
         public DbSet<User> Users { get; set; }
 
         public SafariContext(DbContextOptions<SafariContext> options) : base(options) { }
@@ -10,6 +11,4 @@ public class SafariContext //: DbContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
-
-    */
 }
