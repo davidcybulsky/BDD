@@ -19,7 +19,7 @@ namespace Api.Tests.Behavior.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class SeeingThePriceOfATicketFeature : object, Xunit.IClassFixture<SeeingThePriceOfATicketFeature.FixtureData>, System.IDisposable
+    public partial class SeeingAvailableTicketsToBuyFeature : object, Xunit.IClassFixture<SeeingAvailableTicketsToBuyFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "SeeingThePriceOfATicket.feature"
+#line 1 "SeeingAvailableTickets.feature"
 #line hidden
         
-        public SeeingThePriceOfATicketFeature(SeeingThePriceOfATicketFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SeeingAvailableTicketsToBuyFeature(SeeingAvailableTicketsToBuyFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Seeing the price of a ticket", "    As a visitor\r\n    I want to be able to see a price of the ticket I want to bu" +
-                    "y\r\n    So that I can decide if I want to buy it or not", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Seeing available tickets to buy", "    As a visitor\r\n    I want to be able to see a tickets i can buy\r\n    So that I" +
+                    " can decide if I want to buy it or not", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -82,7 +82,7 @@ namespace Api.Tests.Behavior.Features
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="Visitor checks the price of ticket")]
-        [Xunit.TraitAttribute("FeatureTitle", "Seeing the price of a ticket")]
+        [Xunit.TraitAttribute("FeatureTitle", "Seeing available tickets to buy")]
         [Xunit.TraitAttribute("Description", "Visitor checks the price of ticket")]
         public virtual void VisitorChecksThePriceOfTicket()
         {
@@ -113,13 +113,13 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.Given("the visitor is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    testRunner.When("he chooses the enclosure he wants to go in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.And("tickets are in db", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.And("he chooses the day", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.When("he wants to see available tickets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.Then("the price of this specific ticket will be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("he can see the details of each ticket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -132,12 +132,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                SeeingThePriceOfATicketFeature.FeatureSetup();
+                SeeingAvailableTicketsToBuyFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                SeeingThePriceOfATicketFeature.FeatureTearDown();
+                SeeingAvailableTicketsToBuyFeature.FeatureTearDown();
             }
         }
     }

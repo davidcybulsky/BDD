@@ -4,7 +4,6 @@ Feature: Buying a ticket
     So that I can go to safari
 Scenario: Visitor buys a ticket
     Given the visitor is logged in
-    And he chose the enclosure he wants to go in
-    And he chose the day 
+    And he chooses the ticket he wants to buy
     When he gives instruction to buy the ticket
     Then the ticket will be added to his account
