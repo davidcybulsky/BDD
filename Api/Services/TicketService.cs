@@ -13,7 +13,7 @@ public class TicketService : ITicketService
         _context = context;
     }
 
-    public async Task<ICollection<AvailableTicket>> GetAvailableTickets()
+    public async Task<ICollection<AvailableTicket>> GetAvailableTicketsAsync()
     {
         return await _context.AvailableTickets.ToListAsync();
     }
@@ -23,12 +23,25 @@ public class TicketService : ITicketService
         throw new NotImplementedException();
     }
 
-    public Task<ICollection<Ticket>> PurchaseTicket(Guid userId, PurchaseTicketDto ticketId)
+    public async Task<ICollection<Ticket>> BuyTicketAsync(Guid userId, Ticket ticket)
     {
-        throw new NotImplementedException();
+        await _context.Tickets.AddAsync(new Ticket()
+        {
+            Id = Guid.NewGuid(),
+            Date = ticket.Date,
+            Price = ticket.Price,
+            Enclosure = ticket.Enclosure,
+            UserId = userId
+        });
+
+        await _context.SaveChangesAsync();
+
+        var user = await _context.Users.Where(u => u.Id == userId).Include(u => u.Tickets).FirstOrDefaultAsync();
+
+        return user.Tickets.ToList();
     }
 
-    public Task<bool> ReturnUsersTicket(Guid userId, Guid ticketId)
+    public Task<bool> ReturnUsersTicketAsync(Guid userId, Guid ticketId)
     {
         throw new NotImplementedException();
     }
