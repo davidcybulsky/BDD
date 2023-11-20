@@ -13,7 +13,7 @@ const EncloserGroup = ( { handlePickSafari } : EncloserGroupType ) => {
         handlePickSafari(e.target.value)
     }   
     return (
-        <Form.Group>
+        <Form.Group className='mb-3'>
             <Form.Label htmlFor='safariPicker'>Pick Safari</Form.Label>
             <Form.Select 
                 id='safariPicker' 
@@ -27,8 +27,6 @@ const EncloserGroup = ( { handlePickSafari } : EncloserGroupType ) => {
                     ))
                 }
             </Form.Select>
-            <p>Cena:</p>
-            {/* w zaleznosci od safari taka będzie cena */}
         </Form.Group>
     )
 }

@@ -18,7 +18,8 @@ export type AnimalListType = {
     enclosure : string
 }[]
 export type AnimalTableType = {
-    animalList : AnimalListType
+    animalList : AnimalListType,
+    isAdmin : boolean
 }
 export type TicketDataType = {
     date : string,

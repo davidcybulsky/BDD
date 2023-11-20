@@ -7,20 +7,15 @@ import TicketModal from './ticketmodal/TicketModal'
 
 const Home = () => {
     const animals = animalList;
-    const [toggleBuyTicketModal, setToggleBuyTicketModal] = useState<boolean>(false);
+    const [toggleModal, setToggleModal] = useState<boolean>(false);
     const handleBuyTicket = () => {
-        setToggleBuyTicketModal(true);
+        setToggleModal(true);
     }
     return (
         <>
-            <AnimalTable animalList={animals}/>
+            <AnimalTable animalList={animals} isAdmin={true}/>
             <Button onClick={handleBuyTicket}>Buy ticket</Button>
-            { 
-                toggleBuyTicketModal && (
-                    <TicketModal/>
-                )
-
-            }
+            <TicketModal toggleModal={toggleModal} handleModalHide={() => setToggleModal(false)}/>
         </>
     )
 }

@@ -7,7 +7,7 @@ type DateGroupType = {
 
 const DateGroup = ( { handleDateOnChange } : DateGroupType) => {
   return (
-    <Form.Group>
+    <Form.Group className='mb-3'>
         <Form.Label htmlFor='date'>Date:</Form.Label>
         <Form.Control
             id='date'

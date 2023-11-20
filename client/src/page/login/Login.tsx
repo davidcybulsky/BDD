@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'react-bootstrap'
 import { initUser } from '../../util/util'
 import { UserType } from '../../shared/lib/types';

@@ -1,8 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Register from './page/register/Register';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap';
 import Home from './page/home/Home';
-import Login from './page/login/Login';
+// import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
 
   return (
