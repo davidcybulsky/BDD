@@ -110,15 +110,21 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
-    testRunner.Given("the visitor is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("visitor is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    testRunner.And("he chooses the ticket he wants to buy", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("there are available tickets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.When("he gives instruction to buy the ticket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("he chooses the ticket he wants to buy", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
+    testRunner.And("chooses the date", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
+    testRunner.And("he gives instruction to buy the ticket", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
     testRunner.Then("the ticket will be added to his account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

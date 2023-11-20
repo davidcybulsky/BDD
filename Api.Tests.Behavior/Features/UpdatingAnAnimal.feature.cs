@@ -19,7 +19,7 @@ namespace Api.Tests.Behavior.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class RemovingAnAnimalFeature : object, Xunit.IClassFixture<RemovingAnAnimalFeature.FixtureData>, System.IDisposable
+    public partial class UpdatingAnAnimalFeature : object, Xunit.IClassFixture<UpdatingAnAnimalFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Story11.feature"
+#line 1 "UpdatingAnAnimal.feature"
 #line hidden
         
-        public RemovingAnAnimalFeature(RemovingAnAnimalFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public UpdatingAnAnimalFeature(UpdatingAnAnimalFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Removing an animal", "    As a administrator\r\n    I want to be able to remove animal \r\n    So that I ca" +
-                    "n remove it", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Updating an animal", "    As a administrator\r\n    I want to be able to update existing animal \r\n    So " +
+                    "that I can update it", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Api.Tests.Behavior.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Administrator removes an animal")]
-        [Xunit.TraitAttribute("FeatureTitle", "Removing an animal")]
-        [Xunit.TraitAttribute("Description", "Administrator removes an animal")]
-        public virtual void AdministratorRemovesAnAnimal()
+        [Xunit.SkippableFactAttribute(DisplayName="Administrator updates an animal")]
+        [Xunit.TraitAttribute("FeatureTitle", "Updating an animal")]
+        [Xunit.TraitAttribute("Description", "Administrator updates an animal")]
+        public virtual void AdministratorUpdatesAnAnimal()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Administrator removes an animal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Administrator updates an animal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -116,13 +116,16 @@ this.ScenarioInitialize(scenarioInfo);
     testRunner.And("he sees a list of animals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.When("he gives instruction to remove specific animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("he gives instruction to go to page for updating animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.And("he agrees that he is sure he wants to do it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("he enters information about that animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-    testRunner.Then("the animal will be removed from the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.And("he gives instruction to update that animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
+    testRunner.Then("the animal will be updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -135,12 +138,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                RemovingAnAnimalFeature.FeatureSetup();
+                UpdatingAnAnimalFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                RemovingAnAnimalFeature.FeatureTearDown();
+                UpdatingAnAnimalFeature.FeatureTearDown();
             }
         }
     }
