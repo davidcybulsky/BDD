@@ -1,4 +1,4 @@
-﻿Feature: Logging in 
+Feature: Logging in 
     As a visitor
     I want to be able to log in
     So that I can purchase tickets and see my tickets

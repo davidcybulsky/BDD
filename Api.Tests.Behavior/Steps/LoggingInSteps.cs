@@ -33,7 +33,13 @@ public class LoggingInSteps
     [Given(@"user exists in the database")]
     public void GivenUserExistsInTheDatabase()
     {
-        
+        _context.Add(new User
+        {
+            Username = "user",
+            Password = "pass",
+            Email = "email@gmail.com"
+        });
+        _context.SaveChanges();
     }
 
 

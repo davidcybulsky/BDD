@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Remove="Features\LoggingIn.feature" />
-  </ItemGroup>
-
-  <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\AddingProductsForSale.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\AddingProductToTheCart.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\AddingReview.feature.cs" />
@@ -31,10 +27,6 @@
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\RemovingProductsForSale.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\RemovingReview.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\UpdatingProductsForSale.feature.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Features\LoggingIn.feature" />
   </ItemGroup>
 
   <ItemGroup>
