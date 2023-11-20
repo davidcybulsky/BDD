@@ -9,8 +9,8 @@ const AnimalTable = ( { animalList, isAdmin } : AnimalTableType) => {
     const [editAnimal, setEditAnimal] = useState<Animal>(initAnimal);
 
     const handleAnimalOnEdit = (animal : Animal) => {
-        setEditModal(true);
         setEditAnimal(animal);
+        setEditModal(true);
     }
     const handleAnimalOnDelete = (animal : Animal) => {
         //strzal do backa DELETE
@@ -74,7 +74,11 @@ const AnimalTable = ( { animalList, isAdmin } : AnimalTableType) => {
 
             </tbody>
         </Table>
-        <AnimalEditModal toggleEditModal={toggleEditModal} handleModalHide={() => setEditModal(false)} animal={editAnimal}/>
+        <AnimalEditModal 
+            toggleEditModal={toggleEditModal}
+            handleModalHide={() => setEditModal(false)}
+            animal={editAnimal}
+        />
     </>
     )
 }

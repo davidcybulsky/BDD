@@ -23,15 +23,27 @@ export const animalList : AnimalListType = [
     {
         id : 1,
         name : "Miś",
-        specie : "MIS",
-        caretaker : "Łukasz",
-        enclosure : "NORTH"
+        specie : "BISON",
+        caretaker : "Janusz Kowalski",
+        enclosure : "NORTHERN"
     }, 
     {
         id : 2,
         name : "Wilk Max",
-        specie : "WILK",
-        caretaker : "Marcin",
-        enclosure : "SOUTH"
+        specie : "WOLF",
+        caretaker : "Michał Nowak",
+        enclosure : "SOUTHERN"
+    }
+]
+export const safari = ["NORTHERN", "SOUTHERN", "EASTERN", "WESTERN"];
+export const species = ["DUCK", "BISON", "WOLF", "EAGLE","MOOSE"];
+export const caretakers = [
+    {
+        "name" : "Janusz",
+        "surename" : "Kowalski",
+    },
+    {
+        "name" : "Michał",
+        "surename" : "Nowak"
     }
 ]

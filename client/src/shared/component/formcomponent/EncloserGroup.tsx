@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form } from "react-bootstrap"
+import { safari } from '../../../util/util'
 
 type EncloserGroupType = {
     handlePickSafari : (value : string) => void
@@ -7,7 +8,6 @@ type EncloserGroupType = {
 
 const EncloserGroup = ( { handlePickSafari } : EncloserGroupType ) => {
     const [pickedSafari, setPickedSafari] = useState<string>('');
-    const safari = ["NORTHERN", "SOUTHERN", "EASTERN", "WESTERN"]
     const handleOnChangeSafari = (e : React.ChangeEvent<HTMLSelectElement>) => {
         setPickedSafari(e.target.value)
         handlePickSafari(e.target.value)

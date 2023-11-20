@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Container,Modal, Form, Button, Col, Row, Stack} from 'react-bootstrap'
-import DateGroup from '../../../shared/component/formcomponent/DateGroup';
-import EncloserGroup from '../../../shared/component/formcomponent/EncloserGroup';
-import { TicketDataType } from '../../../shared/lib/types';
+import DateGroup from '../formcomponent/DateGroup';
+import EncloserGroup from '../formcomponent/EncloserGroup';
+import { TicketDataType } from '../../lib/types';
 import { initTicketData } from '../../../util/util';
 
 type TicketModalType = {
@@ -57,7 +57,7 @@ const TicketModal = ({ toggleModal, handleModalHide } : TicketModalType ) => {
                     <EncloserGroup handlePickSafari={handlePickSafari}/>
                     <p>Cena</p>
                     
-                    <Stack direction='horizontal' gap={2} className='justify-content-center dark'>
+                    <Stack direction='horizontal' gap={2} className='justify-content-center'>
                         <Button type="submit" onClick={handleBuyTicket}>
                             Submit
                         </Button>
