@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'react-bootstrap'
 import { initUser } from '../../util/util'
 import { UserType } from '../../shared/lib/types';
-import LoginGroup from '../../shared/component/formcomponent/LoginGroup'
-import PasswordGroup from '../../shared/component/formcomponent/PasswordGroup'
+import LoginGroup from '../../shared/component/formcomponent/login/LoginGroup'
+import PasswordGroup from '../../shared/component/formcomponent/login/PasswordGroup'
 import "./login.css"
 
 const Login = () => {

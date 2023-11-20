@@ -25,3 +25,14 @@ export type TicketDataType = {
     date : string,
     safari : string
 }
+export type CaretakerListType = {
+    id : number, 
+    name : string,
+    surename : string
+
+}[]
+export type CaretakerType = {
+    id : number, 
+    name : string,
+    surename : string
+}

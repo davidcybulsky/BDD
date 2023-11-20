@@ -39,10 +39,12 @@ export const safari = ["NORTHERN", "SOUTHERN", "EASTERN", "WESTERN"];
 export const species = ["DUCK", "BISON", "WOLF", "EAGLE","MOOSE"];
 export const caretakers = [
     {
+        "id" : 1,
         "name" : "Janusz",
         "surename" : "Kowalski",
     },
     {
+        "id" : 2,
         "name" : "Michał",
         "surename" : "Nowak"
     }

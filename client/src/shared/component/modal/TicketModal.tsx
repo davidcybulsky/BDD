@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container,Modal, Form, Button, Col, Row, Stack} from 'react-bootstrap'
-import DateGroup from '../formcomponent/DateGroup';
-import EncloserGroup from '../formcomponent/EncloserGroup';
+import DateGroup from '../formcomponent/ticket/DateGroup';
+import EncloserGroup from '../formcomponent/animal/EncloserGroup';
 import { TicketDataType } from '../../lib/types';
 import { initTicketData } from '../../../util/util';
 

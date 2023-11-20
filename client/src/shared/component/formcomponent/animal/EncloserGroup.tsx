@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form } from "react-bootstrap"
-import { safari } from '../../../util/util'
+import { safari } from '../../../../util/util'
 
 type EncloserGroupType = {
     handlePickSafari : (value : string) => void

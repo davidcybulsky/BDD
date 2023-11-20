@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'react-bootstrap'
 import { initUser } from '../../util/util'
 import { UserType } from '../../shared/lib/types'
-import LoginGroup from '../../shared/component/formcomponent/LoginGroup'
-import PasswordGroup from '../../shared/component/formcomponent/PasswordGroup'
-import EmailGroup from '../../shared/component/formcomponent/EmailGroup'
+import LoginGroup from '../../shared/component/formcomponent/login/LoginGroup'
+import PasswordGroup from '../../shared/component/formcomponent/login/PasswordGroup'
+import EmailGroup from '../../shared/component/formcomponent/login/EmailGroup'
 
 const Register = () => {
   const [user ,setUser] = useState<UserType>(initUser);
