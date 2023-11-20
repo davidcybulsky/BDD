@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'react-bootstrap'
-import { initUser } from '../../util/userUtil'
-import { User } from '../../util/userUtil'
-import LoginGroup from '../../component/LoginGroup'
-import PasswordGroup from '../../component/PasswordGroup'
+import { initUser } from '../../util/util'
+import { UserType } from '../../shared/lib/types';
+import LoginGroup from '../../shared/component/formcomponent/LoginGroup'
+import PasswordGroup from '../../shared/component/formcomponent/PasswordGroup'
 import "./login.css"
 
 const Login = () => {
-    const [user ,setUser] = useState<User>(initUser);
+    const [user ,setUser] = useState<UserType>(initUser);
     const handleLoginChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         setUser({...user, login : event.target.value})
     }

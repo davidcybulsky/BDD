@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'react-bootstrap'
-import { initUser } from '../../util/userUtil'
-import { User } from '../../util/userUtil'
-import LoginGroup from '../../component/LoginGroup'
-import PasswordGroup from '../../component/PasswordGroup'
-import EmailGroup from '../../component/EmailGroup'
+import { initUser } from '../../util/util'
+import { UserType } from '../../shared/lib/types'
+import LoginGroup from '../../shared/component/formcomponent/LoginGroup'
+import PasswordGroup from '../../shared/component/formcomponent/PasswordGroup'
+import EmailGroup from '../../shared/component/formcomponent/EmailGroup'
 
 const Register = () => {
-  const [user ,setUser] = useState<User>(initUser);
+  const [user ,setUser] = useState<UserType>(initUser);
   const handleEmailChange = (event : React.ChangeEvent<HTMLInputElement>) => {
     setUser({...user, email : event.target.value})
   }
@@ -26,6 +26,11 @@ const Register = () => {
   return (
       <Container className='container-md mt-5'>
           <Form>
+              <Row className='mb-4'>
+                <Col className='col-md-6 mx-auto'>
+                    <text>Register</text>
+                </Col>
+              </Row>
               <Row className="mb-4">
                 <EmailGroup handleEmailChange={handleEmailChange} email={user.email}/>
               </Row>
