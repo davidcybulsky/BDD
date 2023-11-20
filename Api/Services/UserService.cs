@@ -9,9 +9,9 @@ public class UserService : IUserService
 
     private readonly SafariContext _context;
 
-    public UserService(SafariContext context)
+    public UserService(/*SafariContext context*/)
     {
-        _context = context;
+        /*_context = context*/;
     }
 
     public async Task<User> RegisterUser(RegisterUserDto userDto)

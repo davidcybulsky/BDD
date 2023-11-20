@@ -8,7 +8,7 @@ namespace Api.Tests.Behavior.Steps;
 [Binding]
 public class SigningUpSteps
 {
-    private readonly UserService _userService; //needs to be changed to interface TODO
+    private readonly UserService _userService = new UserService(); //needs to be changed to interface TODO
     private readonly RegisterUserDto _registerUserDto = new RegisterUserDto();
     private User _resultUser;
 
@@ -35,8 +35,8 @@ public class SigningUpSteps
     public void ThenTheAccountWillBeCreated()
     {
         _resultUser.Should().NotBeNull();
-        _resultUser.Should().Be("user");
-        _resultUser.Should().Be("pass");
-        _resultUser.Should().Be("email@gmail.com");
+        _resultUser.Username.Should().Be("user");
+        _resultUser.Password.Should().Be("pass");
+        _resultUser.Email.Should().Be("email@gmail.com");
     }
 }
