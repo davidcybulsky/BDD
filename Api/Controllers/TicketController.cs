@@ -40,7 +40,7 @@ public class TicketController : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public async Task<ActionResult<ICollection<Ticket>>> GetUsersTickets([FromQuery] Guid userId)
+    public async Task<ActionResult<ICollection<Ticket>>> GetUsersTickets(Guid userId)
     {
         var tickets = await _ticketService.GetUsersTicketsAsync(userId);
         if(tickets == null)
@@ -51,7 +51,7 @@ public class TicketController : ControllerBase
     }
 
     [HttpDelete("{ticketId}")]
-    public async Task<ActionResult<bool>> ReturnUsersTicketAsync([FromQuery] Guid userId, [FromQuery] Guid ticketId)
+    public async Task<ActionResult<bool>> ReturnUsersTicketAsync([FromQuery] Guid userId, Guid ticketId)
     {
         var result = await _ticketService.ReturnUsersTicketAsync(userId, ticketId);
         if(result == null)
