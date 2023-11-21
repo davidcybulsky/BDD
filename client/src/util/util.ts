@@ -1,4 +1,4 @@
-import { AnimalListType, TicketDataType, UserType, Animal } from "../shared/lib/types"
+import { AnimalListType, TicketDataType, UserType, Animal, CaretakerType } from "../shared/lib/types"
 
 export const initAnimal : Animal = {
     id : -1,
@@ -17,6 +17,12 @@ export const initUser : UserType = {
 export const initTicketData : TicketDataType = {
     date : '',
     safari : ''
+}
+export const initCaretaker : CaretakerType = {
+    id : -1,
+    name : "",
+    surename : ""  
+
 }
 
 export const animalList : AnimalListType = [

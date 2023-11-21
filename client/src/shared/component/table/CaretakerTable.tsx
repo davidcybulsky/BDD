@@ -1,20 +1,30 @@
 import React from 'react'
+import { useState } from 'react';
 import { Table, Button } from "react-bootstrap";
 import { CaretakerListType, CaretakerType } from '../../lib/types';
+import CaretakerEditModal from '../modal/CaretakerEditModal';
+import { initCaretaker } from '../../../util/util';
 
 type CaretakerTableType = {
     caretakerList : CaretakerListType
 }
 
 const CaretakerTable = ({ caretakerList } : CaretakerTableType) => {
+    const [editedCaretaker, setEditedCaretaker] = useState<CaretakerType>(initCaretaker);
+    const [toggleEditModal, setEditModal] = useState<boolean>(false);
 
     const handleCaretakerOnEdit = (caretaker : CaretakerType) => {
-
+        setEditedCaretaker(caretaker)
+        setEditModal(true)
     }
     const handleCaretakerOnDelete = (caretaker : CaretakerType) => {
         
     }
+    const handleModalHide = () => {
+        setEditModal(false)
+    }
     return (
+        <>
         <Table>
             <thead>
                 <tr>
@@ -53,6 +63,11 @@ const CaretakerTable = ({ caretakerList } : CaretakerTableType) => {
                 }
             </tbody>
         </Table>
+        <CaretakerEditModal 
+            toggleEditModal={toggleEditModal}
+            handleModalHide={handleModalHide}
+            caretaker={editedCaretaker}/>
+        </>
     )
 }
 
