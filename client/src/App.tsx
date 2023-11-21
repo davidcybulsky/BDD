@@ -2,10 +2,29 @@
 import { Container } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import Home from './page/home/Home';
+import Register from './page/register/Register';
 import axios from './api/axios';
-// import "bootstrap/dist/css/bootstrap.min.css";
+import Login from './page/login/Login';
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import AnimalTable from './shared/component/table/AnimalTable';
+
 function App() {
 
+  const routes = createBrowserRouter([
+    {
+      path: "",
+      element:  (
+        <Login/>
+      )
+    },
+    {
+      path: "/register",
+      element:  (
+        <Register/>
+      )
+    }
+
+  ])
 
   return (
     <Container>

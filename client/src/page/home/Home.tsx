@@ -5,6 +5,7 @@ import AnimalTable from '../../shared/component/table/AnimalTable'
 import { animalList, caretakers } from '../../util/util'
 import TicketModal from '../../shared/component/modal/TicketModal'
 import CaretakerTable from '../../shared/component/table/CaretakerTable'
+import NavHome from '../../shared/component/nav/NavHome'
 
 const Home = () => {
     const animals = animalList;
@@ -15,6 +16,7 @@ const Home = () => {
     }
     return (
         <>
+            <NavHome/>
             <CaretakerTable caretakerList={caretakerList}/>
             {/* <AnimalTable animalList={animals} isAdmin={true}/> */}
             <Button onClick={handleBuyTicket}>Buy ticket</Button>

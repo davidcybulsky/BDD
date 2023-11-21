@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'react-bootstrap'
+import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col, Stack } from 'react-bootstrap'
 import { initUser } from '../../util/util'
 import { UserType } from '../../shared/lib/types';
 import LoginGroup from '../../shared/component/formcomponent/login/LoginGroup'
@@ -27,7 +27,7 @@ const Login = () => {
                 <Form>
                     <Row className='mb-4'>
                         <Col className='col-md-6 mx-auto'>
-                            <text>Login</text>
+                            <h1>Login</h1>
                         </Col>
                     </Row>
                     <Row className="mb-4">
@@ -37,16 +37,14 @@ const Login = () => {
                         <PasswordGroup handlePasswordChange={handlePasswordChange} password={user.password}/>
                     </Row>
                     <Row>
-                        <Col>
+                        <Stack direction='horizontal' gap={2} className='justify-content-center'>
                             <Button type="submit" onClick={handleOnUserLogin} className='ml-auto'>
                                 Login
                             </Button>
-                        </Col>
-                        <Col>
                             <Button type="submit" onClick={handleOnAdminLogin}>
-                                Login as Admin
+                                Register 
                             </Button>
-                        </Col>
+                        </Stack>
                     </Row>
                 </Form>
             </Container>
