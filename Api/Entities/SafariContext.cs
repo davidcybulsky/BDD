@@ -6,6 +6,8 @@ public class SafariContext : DbContext
 {
     public DbSet<Animal> Animals { get; set; }
 
+    public DbSet<Caretaker> Caretakers { get; set; }
+
     public DbSet<User> Users { get; set; }
 
     public DbSet<Ticket> Tickets { get; set; }
