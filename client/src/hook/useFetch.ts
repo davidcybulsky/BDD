@@ -28,7 +28,7 @@ const reducer = (state : any, action : any) => {
             return { ...state, data: [], loading: true }
         }
         case(ACTIONS.FETCH_DATA): {
-            return { ...state, data : action.data, loading: false}
+            return { ...state, data : action.payload, loading: false}
         }
         case(ACTIONS.ERROR): {
             return { ...state, data: [], error: action.payload }
@@ -37,23 +37,23 @@ const reducer = (state : any, action : any) => {
             return state;
     }
 }
- 
 
 const useFetch = ( url  : string) => {
     const [state,dispatch] = useReducer(reducer, initState);
 
-    useEffect(() => {
+    const fetchData = async () => {
         dispatch({ type : ACTIONS.API_REQUEST })
-        axios.get(url)
-        .then((res) => {
-            dispatch({ type : ACTIONS.FETCH_DATA, payload: res.data })
-        })
-        .catch((err) => {
-            dispatch({ type : ACTIONS.FETCH_DATA, payload: err.error })
-        })
-    },[url])
+        await axios.get(url)
+            .then((res) => {
+                dispatch({ type : ACTIONS.FETCH_DATA, payload: res.data })
+            })
+            .catch((err) => {
+                dispatch({ type : ACTIONS.FETCH_DATA, payload: err.error })
+            })
+        return state;
+    }
 
-    return state
+    return [state, fetchData]
 }
 
 export default useFetch

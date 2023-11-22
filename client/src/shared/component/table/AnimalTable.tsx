@@ -11,9 +11,23 @@ type AnimalTableType = {
 }
 const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     const animals = animalList;
-    // const { data , loading, error } = useFetch("/test");
+    const [state, fetch] = useFetch("/test");
+    // const [animalList, setAnimalList] = useState<Animal>(initAnimal);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
     const [editAnimal, setEditAnimal] = useState<Animal>(initAnimal);
+    const [checker, setChecker] = useState<string>("siema");
+
+    useEffect(() => {
+        const getData = async () => {
+            const res = await fetch();
+        }
+        getData()
+    },[])
+    useEffect(() => {
+        if(state.data) {
+            setChecker(state.data);
+        }
+    },[state])
 
     const handleAnimalOnEdit = (animal : Animal) => {
         setEditAnimal(animal);
@@ -25,6 +39,7 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
 
     return (
     <>
+        { checker }
         <Table>
             <thead>
                 <tr>
