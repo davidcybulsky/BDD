@@ -44,7 +44,7 @@ public class SafariContext : DbContext
                 Enclosure = Enclosure.WESTERN
             }
         );
-
+        /*
         modelBuilder.Entity<Animal>().
             HasData(
             new Animal()
@@ -71,5 +71,6 @@ public class SafariContext : DbContext
                 Name = "Janusz",
                 Species = Species.Lion
             });
+        */
     }
 }
