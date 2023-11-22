@@ -2,6 +2,7 @@
 using Api.Entities;
 using Api.Interfaces;
 using Api.Services;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Tests.Behavior.Steps;
@@ -15,6 +16,7 @@ public class ReturningATicketSteps
     private User _user;
     private List<TicketDto> _userTickets;
     private bool _removingResult;
+    private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
 
 
     public ReturningATicketSteps()
@@ -23,7 +25,7 @@ public class ReturningATicketSteps
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         _context = new SafariContext(options);
-        _ticketService = new TicketService(_context);
+        _ticketService = new TicketService(_context, _mapper);
         _userService = new UserService(_context);
     }
 

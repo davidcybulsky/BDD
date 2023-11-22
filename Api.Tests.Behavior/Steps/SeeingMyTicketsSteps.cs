@@ -2,6 +2,7 @@
 using Api.Entities;
 using Api.Interfaces;
 using Api.Services;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Tests.Behavior.Steps;
@@ -15,6 +16,7 @@ public class SeeingMyTicketsSteps
     private User _user;
     private TicketDto _boughtTicket;
     private List<TicketDto> _ticketsResult;
+    private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
 
     public SeeingMyTicketsSteps()
     {
@@ -22,7 +24,7 @@ public class SeeingMyTicketsSteps
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         _context = new SafariContext(options);
-        _ticketService = new TicketService(_context);
+        _ticketService = new TicketService(_context, _mapper);
         _userService = new UserService(_context);
     }
 

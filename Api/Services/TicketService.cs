@@ -10,9 +10,10 @@ public class TicketService : ITicketService
 {
     private readonly SafariContext _context;
     private readonly IMapper _mapper;
-    public TicketService(SafariContext context)
+    public TicketService(SafariContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     public async Task<ICollection<AvailableTicket>> GetAvailableTicketsAsync()

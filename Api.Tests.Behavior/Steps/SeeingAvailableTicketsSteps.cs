@@ -1,6 +1,7 @@
 ﻿using Api.Entities;
 using Api.Interfaces;
 using Api.Services;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Tests.Behavior.Steps;
@@ -12,6 +13,7 @@ public class SeeingAvailableTicketsSteps
     private readonly ITicketService _ticketService;
     private List<AvailableTicket> _availableTicketsResult;
     private List<AvailableTicket> _availableTickets;
+    private readonly IMapper _mapper = new Mapper(new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>()));
 
     public SeeingAvailableTicketsSteps()
     {
@@ -19,7 +21,7 @@ public class SeeingAvailableTicketsSteps
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         _context = new SafariContext(options);
-        _ticketService = new TicketService(_context);
+        _ticketService = new TicketService(_context, _mapper);
     }
 
     [Given(@"tickets are in db")]
