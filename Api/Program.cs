@@ -14,6 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+<<<<<<< Updated upstream
+=======
 builder.Services.AddCors(options => {
     options.AddDefaultPolicy(
     policy => {
@@ -24,6 +26,8 @@ builder.Services.AddCors(options => {
     });
 });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITicketService,  TicketService>();
 builder.Services.AddDbContext<SafariContext>(options =>
@@ -31,6 +35,8 @@ builder.Services.AddDbContext<SafariContext>(options =>
     options.UseSqlite(configuration.GetConnectionString("Default"));
 });
 
+
+>>>>>>> Stashed changes
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
