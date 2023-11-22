@@ -33,9 +33,10 @@ namespace Api.Services
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<Animal>> GetAnimals()
+        public async Task<ICollection<Animal>> GetAnimals()
         {
-            throw new NotImplementedException();
+            var animals = await _context.Animals.ToListAsync();
+            return animals;
         }
 
         public async Task<IEnumerable<Animal>> GetAnimalsBySpecies(Species species)
