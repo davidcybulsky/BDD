@@ -2,6 +2,7 @@ import { Modal, ModalBody, ModalHeader, Form, Button, Stack } from "react-bootst
 import { Animal } from "../../lib/types"
 import { useState, useEffect } from "react"
 import { species, caretakers, safari, initAnimal } from "../../../util/util"
+import usePut from "../../../hook/usePut"
 
 type AnimalEditModalType = {
     toggleEditModal : boolean,
@@ -11,13 +12,15 @@ type AnimalEditModalType = {
 
 const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal} : AnimalEditModalType) => {
     const [editedAnimal, setEditedAnimal] = useState<Animal>(animal);
+    const [state, putData] = usePut({ url : '/text', body :  editedAnimal });
 
     useEffect(() => {
         setEditedAnimal(animal);
     },[animal])
 
     const handleEditAnimalSubmit = () => {
-        //update do bazki
+        console.log(editedAnimal);
+        // putData();
     }
     const handleModalHideAndDataClear = () => {
         setEditedAnimal(initAnimal);
@@ -92,7 +95,7 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal} : AnimalEdi
                         </Form.Select>
                     </Form.Group>
                     <Stack direction="horizontal" gap={2} className='justify-content-center'>
-                        <Button type="submit" onClick={handleEditAnimalSubmit}>
+                        <Button onClick={handleEditAnimalSubmit}>
                             Submit
                         </Button>
                         <Button onClick={handleModalHideAndDataClear} variant="outline-primary">

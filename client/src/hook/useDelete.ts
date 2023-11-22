@@ -1,8 +1,7 @@
 import React, { useReducer } from 'react'
 import axios from '../api/axios'
 type usePostType = {
-    url : string, 
-    body : any 
+    url : string 
 }
 const initState = {
     onLoading : false,
@@ -32,11 +31,11 @@ const reducer = (state : any, action : any) => {
 }
 
 
-const usePut = ({ url , body} : usePostType) => {
+const useDelete = ( url  : string) => {
     const [state,dispatch] = useReducer( reducer, initState);
     const deleteData = async () => {
         dispatch({ type: ACTIONS.API_REQUEST })
-        await axios.delete(url,body)
+        await axios.delete(url)
             .then((res) => {
                 dispatch({ type: ACTIONS.DELETE_DATA })
             })
@@ -46,4 +45,4 @@ const usePut = ({ url , body} : usePostType) => {
     }
     return [state,deleteData];
 }
-export default usePut
+export default useDelete

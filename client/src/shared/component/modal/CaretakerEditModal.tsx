@@ -58,7 +58,7 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker} : Car
                         <Button type='submit' onClick={handleSubmitEditCaretaker}>
                             Submit
                         </Button>
-                        <Button onClick={handleModalHideAndClearData}>
+                        <Button onClick={handleModalHideAndClearData} variant='outline-primary'>
                             Cancel
                         </Button>
                     </Stack>

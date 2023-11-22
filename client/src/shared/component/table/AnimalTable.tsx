@@ -5,6 +5,8 @@ import AnimalEditModal from '../modal/AnimalEditModal';
 import { initAnimal } from '../../../util/util';
 import { animalList } from '../../../util/util';
 import useFetch from '../../../hook/useFetch';
+import useDelete from '../../../hook/useDelete';
+
 type AnimalTableType = {
     // animalList : AnimalListType,
     isAdmin : boolean
@@ -12,6 +14,7 @@ type AnimalTableType = {
 const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     const animals = animalList;
     const [state, fetch] = useFetch("/test");
+    const [_ , deleteData] = useDelete('/test')
     // const [animalList, setAnimalList] = useState<Animal>(initAnimal);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
     const [editAnimal, setEditAnimal] = useState<Animal>(initAnimal);
@@ -19,7 +22,7 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await fetch();
+            await fetch();
         }
         getData()
     },[])
@@ -34,7 +37,7 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
         setEditModal(true);
     }
     const handleAnimalOnDelete = (animal : Animal) => {
-        //strzal do backa DELETE
+        deleteData();
     }
 
     return (

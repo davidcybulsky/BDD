@@ -33,9 +33,8 @@ const Home = () => {
 
     return (
         <>
-            <NavHome handleOnDisplayChange={handleOnDisplayChange}/>
+            <NavHome handleOnDisplayChange={handleOnDisplayChange} handleBuyTicket={handleBuyTicket}/>
             { displayTable }
-            <Button onClick={handleBuyTicket}>Buy ticket</Button>
             <TicketModal toggleModal={toggleModal} handleModalHide={() => setToggleModal(false)}/>
         </>
     )
