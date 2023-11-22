@@ -38,9 +38,14 @@ namespace Api.Services
             throw new NotImplementedException();
         }
 
-        public Task UdateAnimal(Guid id, Animal animal)
+        public async Task UpdateAnimal(Guid id, Animal animal)
         {
-            throw new NotImplementedException();
+            var animalInDb = await _context.Animals.FirstOrDefaultAsync(a => a.Id == id);
+            if (animalInDb is not null)
+            {
+                animalInDb.Name = animal.Name;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
