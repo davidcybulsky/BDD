@@ -19,7 +19,7 @@ namespace Api.Tests.Behavior.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class RemovingACaretakerFeature : object, Xunit.IClassFixture<RemovingACaretakerFeature.FixtureData>, System.IDisposable
+    public partial class SeeingSpecificCaretakerFeature : object, Xunit.IClassFixture<SeeingSpecificCaretakerFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Story17.feature"
+#line 1 "SeeingSpecificCaretaker.feature"
 #line hidden
         
-        public RemovingACaretakerFeature(RemovingACaretakerFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SeeingSpecificCaretakerFeature(SeeingSpecificCaretakerFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Removing a caretaker", " As a administrator\r\n I want to be able to remove caretaker\r\n So that I can remov" +
-                    "e it", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Seeing specific caretaker", " As a user\r\n I want to be able to see info about specific caretaker\r\n So that I k" +
+                    "now something about him/her", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Api.Tests.Behavior.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Administrator removes an animal")]
-        [Xunit.TraitAttribute("FeatureTitle", "Removing a caretaker")]
-        [Xunit.TraitAttribute("Description", "Administrator removes an animal")]
-        public virtual void AdministratorRemovesAnAnimal()
+        [Xunit.SkippableFactAttribute(DisplayName="User checks specific caretaker")]
+        [Xunit.TraitAttribute("FeatureTitle", "Seeing specific caretaker")]
+        [Xunit.TraitAttribute("Description", "User checks specific caretaker")]
+        public virtual void UserChecksSpecificCaretaker()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Administrator removes an animal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User checks specific caretaker", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -110,19 +110,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
-  testRunner.Given("administrator is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("user sees list of caretakers", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.And("he sees a list of caretakers", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("he gives instruction to see which animals are taken care of by this caretaker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.When("he gives instruction to remove specific caretaker", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 9
- testRunner.And("he agrees that he is sure he wants to do it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 10
- testRunner.Then("the caretaker will be removed from the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the information about that caretaker will be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -135,12 +129,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                RemovingACaretakerFeature.FeatureSetup();
+                SeeingSpecificCaretakerFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                RemovingACaretakerFeature.FeatureTearDown();
+                SeeingSpecificCaretakerFeature.FeatureTearDown();
             }
         }
     }
