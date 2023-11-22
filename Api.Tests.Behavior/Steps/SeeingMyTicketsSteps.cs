@@ -13,8 +13,8 @@ public class SeeingMyTicketsSteps
     private readonly ITicketService _ticketService;
     private readonly IUserService _userService;
     private User _user;
-    private Ticket _boughtTicket;
-    private List<Ticket> _ticketsResult;
+    private TicketDto _boughtTicket;
+    private List<TicketDto> _ticketsResult;
 
     public SeeingMyTicketsSteps()
     {
@@ -69,7 +69,7 @@ public class SeeingMyTicketsSteps
 
         var ticketList = await _ticketService.GetAvailableTicketsAsync();
         var choosenTicket = ticketList.First();
-        _boughtTicket = new Ticket()
+        _boughtTicket = new TicketDto()
         {
             Id = choosenTicket.Id,
             Price = choosenTicket.Price,
@@ -84,7 +84,7 @@ public class SeeingMyTicketsSteps
     [When(@"he gives instruction to see his tickets")]
     public async void WhenHeGivesInstructionToSeeHisTickets()
     {
-        _ticketsResult = (List<Ticket>) await _ticketService.GetUsersTicketsAsync(_user.Id);
+        _ticketsResult = (List<TicketDto>) await _ticketService.GetUsersTicketsAsync(_user.Id);
     }
 
     [Then(@"his tickets will be displayed")]

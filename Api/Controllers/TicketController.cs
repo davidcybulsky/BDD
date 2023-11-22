@@ -29,7 +29,7 @@ public class TicketController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Ticket>> PurchaseTicket([FromQuery] Guid userId ,[FromBody] Ticket ticketToBuy)
+    public async Task<ActionResult<TicketDto>> PurchaseTicket([FromQuery] Guid userId ,[FromBody] TicketDto ticketToBuy)
     {
         var ticket = await _ticketService.BuyTicketAsync(userId, ticketToBuy);
         if(ticket == null)
@@ -40,7 +40,7 @@ public class TicketController : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public async Task<ActionResult<ICollection<Ticket>>> GetUsersTickets(Guid userId)
+    public async Task<ActionResult<ICollection<TicketDto>>> GetUsersTickets(Guid userId)
     {
         var tickets = await _ticketService.GetUsersTicketsAsync(userId);
         if(tickets == null)

@@ -13,7 +13,7 @@ public class ReturningATicketSteps
     private readonly ITicketService _ticketService;
     private readonly IUserService _userService;
     private User _user;
-    private List<Ticket> _userTickets;
+    private List<TicketDto> _userTickets;
     private bool _removingResult;
 
 
@@ -70,7 +70,7 @@ public class ReturningATicketSteps
 
         var ticketList = await _ticketService.GetAvailableTicketsAsync();
         var choosenTicket = ticketList.First();
-        var boughtTicket = new Ticket()
+        var boughtTicket = new TicketDto()
         {
             Id = choosenTicket.Id,
             Price = choosenTicket.Price,
@@ -80,7 +80,7 @@ public class ReturningATicketSteps
         boughtTicket.Date = DateTime.Now;
 
         _ = await _ticketService.BuyTicketAsync(_user.Id, boughtTicket);
-        _userTickets = (List<Ticket>) await _ticketService.GetUsersTicketsAsync(_user.Id);
+        _userTickets = (List<TicketDto>) await _ticketService.GetUsersTicketsAsync(_user.Id);
     }
 
     [When(@"he gives instruction to return some ticket")]
@@ -92,7 +92,7 @@ public class ReturningATicketSteps
     [Then(@"this ticket will be removed from his account")]
     public async void ThenThisTicketWillBeRemovedFromHisAccount()
     {
-        var userTickets = (List<Ticket>) await _ticketService.GetUsersTicketsAsync(_user.Id);
+        var userTickets = (List<TicketDto>) await _ticketService.GetUsersTicketsAsync(_user.Id);
 
         userTickets.Count.Should().Be(0);
         _removingResult.Should().Be(true);

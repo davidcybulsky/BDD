@@ -13,8 +13,8 @@ public class BuyingATicketSteps
     private readonly ITicketService _ticketService;
     private readonly IUserService _userService;
     private User _user;
-    private Ticket _ticketToBuy;
-    private Ticket _boughtTicketResult;
+    private TicketDto _ticketToBuy;
+    private TicketDto _boughtTicketResult;
 
     public BuyingATicketSteps()
     {
@@ -73,7 +73,7 @@ public class BuyingATicketSteps
     {
         var ticketList = await _ticketService.GetAvailableTicketsAsync();
         var choosenTicket = ticketList.First();
-        _ticketToBuy = new Ticket()
+        _ticketToBuy = new TicketDto()
         {
             Id = choosenTicket.Id,
             Price = choosenTicket.Price,
