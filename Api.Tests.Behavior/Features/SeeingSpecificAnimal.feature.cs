@@ -28,7 +28,7 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Story8.feature"
+#line 1 "SeeingSpecificAnimal.feature"
 #line hidden
         
         public SeeingSpecificAnimalFeature(SeeingSpecificAnimalFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
@@ -110,7 +110,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
-    testRunner.Given("user sees list of animals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("user sees a list of animals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
     testRunner.When("he gives instruction to see details of specific animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

@@ -13,9 +13,10 @@ namespace Api.Services
             _context = context;
         }
 
-        public Task CreateAnimal(Animal animal)
+        public async Task CreateAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(animal);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAnimal(Guid id)
@@ -28,9 +29,10 @@ namespace Api.Services
             }
         }
 
-        public Task<Animal> GetAnimal()
+        public async Task<Animal> GetAnimal(Guid id)
         {
-            throw new NotImplementedException();
+            var animal = await _context.Animals.FirstOrDefaultAsync(x => x.Id == id);
+            return animal;
         }
 
         public async Task<ICollection<Animal>> GetAnimals()
