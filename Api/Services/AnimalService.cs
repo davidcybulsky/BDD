@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Services
 {
-    public class AnimalService : IAnimalService
+    public class AnimalService : IAnimalService, IExtendedAnimalService
     {
         private readonly SafariContext _context;
 
@@ -13,9 +13,10 @@ namespace Api.Services
             _context = context;
         }
 
-        public Task CreateAnimal(Animal animal)
+        public async Task CreateAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(animal);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAnimal(Guid id)
@@ -28,19 +29,41 @@ namespace Api.Services
             }
         }
 
-        public Task<Animal> GetAnimal()
+        public async Task<Animal> GetAnimal(Guid id)
         {
-            throw new NotImplementedException();
+            var animal = await _context.Animals.FirstOrDefaultAsync(x => x.Id == id);
+            return animal;
         }
 
-        public Task<ICollection<Animal>> GetAnimals()
+        public async Task<ICollection<Animal>> GetAnimals()
         {
-            throw new NotImplementedException();
+            var animals = await _context.Animals.ToListAsync();
+            return animals;
         }
 
-        public Task UdateAnimal(Guid id, Animal animal)
+        public async Task<IEnumerable<Animal>> GetAnimalsByCaretakerId(int caretakerId)
         {
-            throw new NotImplementedException();
+            var animals = await _context.Caretakers
+                                .Include(x => x.Animals)
+                                .Select(x => x.Animals)
+                                .FirstAsync();
+            return animals;
+        }
+
+        public async Task<IEnumerable<Animal>> GetAnimalsBySpecies(Species species)
+        {
+            var animals = await _context.Animals.Where(x => x.Species == species).ToListAsync();
+            return animals;
+        }
+
+        public async Task UpdateAnimal(Guid id, Animal animal)
+        {
+            var animalInDb = await _context.Animals.FirstOrDefaultAsync(a => a.Id == id);
+            if (animalInDb is not null)
+            {
+                animalInDb.Name = animal.Name;
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
