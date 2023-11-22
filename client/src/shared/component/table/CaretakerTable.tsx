@@ -10,6 +10,7 @@ type CaretakerTableType = {
 }
 
 const CaretakerTable = ({ caretakerList } : CaretakerTableType) => {
+    // const { data , loading, error } = useFetch("/test");
     const [editedCaretaker, setEditedCaretaker] = useState<CaretakerType>(initCaretaker);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
 
@@ -28,11 +29,10 @@ const CaretakerTable = ({ caretakerList } : CaretakerTableType) => {
         <Table>
             <thead>
                 <tr>
-                    <td>id</td>
-                    <td>name</td>
-                    <td>surename</td>
-                    <td>edit</td>
-                    <td>delete</td>
+                    <th>Name</th>
+                    <th>Surename</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>

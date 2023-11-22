@@ -12,7 +12,7 @@ function App() {
 
   const routes = createBrowserRouter([
     {
-      path: "",
+      path: "/login",
       element:  (
         <Login/>
       )
@@ -22,16 +22,18 @@ function App() {
       element:  (
         <Register/>
       )
+    },
+    {
+      path: "/",
+      element : (
+        <Home/>
+      )
     }
 
   ])
 
   return (
-    <Container>
-      {/* <Login/> */}
-      {/* <Register/> */}
-      <Home/>
-    </Container>
+    <RouterProvider router={routes}/>
   )
 }
 

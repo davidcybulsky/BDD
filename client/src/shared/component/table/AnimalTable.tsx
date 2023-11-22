@@ -1,10 +1,17 @@
-import { useState, useRef }  from 'react'
+import { useState, useEffect }  from 'react'
 import { Button, Table } from 'react-bootstrap'
-import { Animal, AnimalTableType } from '../../lib/types'
+import { Animal } from '../../lib/types'
 import AnimalEditModal from '../modal/AnimalEditModal';
 import { initAnimal } from '../../../util/util';
-
-const AnimalTable = ( { animalList, isAdmin } : AnimalTableType) => {
+import { animalList } from '../../../util/util';
+import useFetch from '../../../hook/useFetch';
+type AnimalTableType = {
+    // animalList : AnimalListType,
+    isAdmin : boolean
+}
+const AnimalTable = ( { isAdmin } : AnimalTableType) => {
+    const animals = animalList;
+    // const { data , loading, error } = useFetch("/test");
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
     const [editAnimal, setEditAnimal] = useState<Animal>(initAnimal);
 
@@ -21,7 +28,6 @@ const AnimalTable = ( { animalList, isAdmin } : AnimalTableType) => {
         <Table>
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Specie</th>
                     <th>Caretaker</th>

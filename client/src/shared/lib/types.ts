@@ -17,10 +17,7 @@ export type AnimalListType = {
     caretaker : string,
     enclosure : string
 }[]
-export type AnimalTableType = {
-    animalList : AnimalListType,
-    isAdmin : boolean
-}
+
 export type TicketDataType = {
     date : string,
     safari : string

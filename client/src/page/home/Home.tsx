@@ -8,17 +8,33 @@ import CaretakerTable from '../../shared/component/table/CaretakerTable'
 import NavHome from '../../shared/component/nav/NavHome'
 
 const Home = () => {
-    const animals = animalList;
     const caretakerList = caretakers; 
     const [toggleModal, setToggleModal] = useState<boolean>(false);
+    const [onDisplayChange, setOnDisplayChange] = useState<string>('animal');
+
     const handleBuyTicket = () => {
         setToggleModal(true);
     }
+    const handleOnDisplayChange = (navLink : string) => {
+        setOnDisplayChange(navLink);
+    }
+
+    const displayTable =          
+        onDisplayChange === 'animal' ? (
+        <AnimalTable isAdmin={true}/> 
+        ) :  (
+            onDisplayChange === 'caretaker' ? (
+                <CaretakerTable caretakerList={caretakerList}/>
+            ) : (
+                <>
+                </>
+            )
+    );
+
     return (
         <>
-            <NavHome/>
-            <CaretakerTable caretakerList={caretakerList}/>
-            {/* <AnimalTable animalList={animals} isAdmin={true}/> */}
+            <NavHome handleOnDisplayChange={handleOnDisplayChange}/>
+            { displayTable }
             <Button onClick={handleBuyTicket}>Buy ticket</Button>
             <TicketModal toggleModal={toggleModal} handleModalHide={() => setToggleModal(false)}/>
         </>
