@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Services
 {
-    public class AnimalService : IAnimalService
+    public class AnimalService : IAnimalService, IExtendedAnimalService
     {
         private readonly SafariContext _context;
 
@@ -36,6 +36,12 @@ namespace Api.Services
         public Task<ICollection<Animal>> GetAnimals()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Animal>> GetAnimalsBySpecies(Species species)
+        {
+            var animals = await _context.Animals.Where(x => x.Species == species).ToListAsync();
+            return animals;
         }
 
         public async Task UpdateAnimal(Guid id, Animal animal)

@@ -48,22 +48,26 @@ public class SafariContext : DbContext
             new Animal()
             {
                 Id = Guid.NewGuid(),
-                Name = "Tony"
+                Name = "Tony",
+                Species = Species.Lion
             },
             new Animal()
             {
                 Id = Guid.NewGuid(),
-                Name = "Zoe"
+                Name = "Zoe",
+                Species = Species.Zebra
             },
             new Animal()
             {
                 Id = Guid.NewGuid(),
-                Name = "Joe"
+                Name = "Joe",
+                Species = Species.Duck
             },
             new Animal()
             {
                 Id = Guid.NewGuid(),
-                Name = "Janusz"
+                Name = "Janusz",
+                Species = Species.Lion
             });
     }
 }
