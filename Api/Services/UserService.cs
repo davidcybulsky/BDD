@@ -49,4 +49,17 @@ public class UserService : IUserService
 
         return user;
     }
+
+    public async Task<User> DeleteUser(LoginUserDto userDto)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userDto.Username);
+
+        if(user is not null)
+        {
+            _context.Users.Remove(user);
+            _context.SaveChangesAsync();
+            return user;
+        }
+        return null;
+    }
 }
