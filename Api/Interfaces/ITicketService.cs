@@ -9,4 +9,6 @@ public interface ITicketService
     Task<bool> ReturnUsersTicketAsync(Guid userId, Guid ticketId);
     Task<ICollection<AvailableTicket>> GetAvailableTicketsAsync();
     Task<TicketDto> BuyTicketAsync(Guid userId, TicketDto ticketId);
+    Task<ICollection<Ticket>> GetAllTicketsAsync();
+
 }

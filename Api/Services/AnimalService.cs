@@ -65,5 +65,10 @@ namespace Api.Services
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<IEnumerable<Animal>> GetAnimalsByEnclosure(Enclosure enclosure)
+        {
+            var animals = await _context.Animals.Where(x => x.Enclosure == enclosure).ToListAsync();
+            return animals;
+        }
     }
 }

@@ -6,5 +6,6 @@ namespace Api.Interfaces
     {
         Task<IEnumerable<Animal>> GetAnimalsBySpecies(Species species);
         Task<IEnumerable<Animal>> GetAnimalsByCaretakerId(int caretakerId);
+        Task<IEnumerable<Animal>> GetAnimalsByEnclosure(Enclosure enclosure);
     }
 }

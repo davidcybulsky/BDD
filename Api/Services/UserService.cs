@@ -54,7 +54,7 @@ public class UserService : IUserService
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userDto.Username);
 
-        if(user is not null)
+        if(user is not null && user.Password == userDto.Password)
         {
             _context.Users.Remove(user);
             _context.SaveChangesAsync();

@@ -40,7 +40,7 @@ public class TicketController : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public async Task<ActionResult<ICollection<TicketDto>>> GetUsersTickets(Guid userId)
+    public async Task<ActionResult<ICollection<Ticket>>> GetUsersTickets(Guid userId)
     {
         var tickets = await _ticketService.GetUsersTicketsAsync(userId);
         if(tickets == null)
@@ -59,5 +59,16 @@ public class TicketController : ControllerBase
             return BadRequest();
         }
         return NotFound();
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<ICollection<TicketDto>>> GetAllTickets()
+    {
+        var tickets = await _ticketService.GetAllTicketsAsync();
+        if (tickets == null)
+        {
+            return NoContent();
+        }
+        return Ok(tickets);
     }
 }

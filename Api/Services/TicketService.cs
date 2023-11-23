@@ -71,4 +71,15 @@ public class TicketService : ITicketService
         
         return true;
     }
+    public async Task<ICollection<Ticket>> GetAllTicketsAsync()
+    {
+        var tickets = await _context.Tickets.ToListAsync();
+
+        if (tickets is null)
+        {
+            return null;
+        }
+
+        return tickets;
+    }
 }

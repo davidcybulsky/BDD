@@ -23,8 +23,22 @@ namespace Api.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Animal>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Animal>>> GetAll(string enclosure = null)
         {
+            if(enclosure is not null)
+            {
+                if (Enum.TryParse<Enclosure>(enclosure, ignoreCase: true, out Enclosure result))
+                {
+
+                    var animalsByEnclosure = await _service.GetAnimalsByEnclosure(result);
+                    return Ok(animalsByEnclosure);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+
             var animals = await _service.GetAnimals();
             return Ok(animals);
         }
