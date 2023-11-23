@@ -19,7 +19,7 @@ namespace Api.Tests.Behavior.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class LoggingInFeature : object, Xunit.IClassFixture<LoggingInFeature.FixtureData>, System.IDisposable
+    public partial class SeeingMyTicketsFeature : object, Xunit.IClassFixture<SeeingMyTicketsFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "LoggingIn.feature"
+#line 1 "SeeingMyTickets.feature"
 #line hidden
         
-        public LoggingInFeature(LoggingInFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SeeingMyTicketsFeature(SeeingMyTicketsFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Logging in", "    As a visitor\r\n    I want to be able to log in\r\n    So that I can purchase tic" +
-                    "kets and see my tickets", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Seeing my tickets", "    As a visitor\r\n    I want to be able to see my tickets\r\n    So that I can see " +
+                    "them", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Api.Tests.Behavior.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Visitor logs in")]
-        [Xunit.TraitAttribute("FeatureTitle", "Logging in")]
-        [Xunit.TraitAttribute("Description", "Visitor logs in")]
-        public virtual void VisitorLogsIn()
+        [Xunit.SkippableFactAttribute(DisplayName="Visitor checks his tickets")]
+        [Xunit.TraitAttribute("FeatureTitle", "Seeing my tickets")]
+        [Xunit.TraitAttribute("Description", "Visitor checks his tickets")]
+        public virtual void VisitorChecksHisTickets()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Visitor logs in", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Visitor checks his tickets", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -110,16 +110,16 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
-    testRunner.Given("the visitor remembers his username and password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("the visitor is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    testRunner.And("user exists in the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("visitor bought tickets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.When("he enters his username and password and wants to log in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("he gives instruction to see his tickets", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.Then("he will be logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("his tickets will be displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -132,12 +132,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                LoggingInFeature.FeatureSetup();
+                SeeingMyTicketsFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                LoggingInFeature.FeatureTearDown();
+                SeeingMyTicketsFeature.FeatureTearDown();
             }
         }
     }

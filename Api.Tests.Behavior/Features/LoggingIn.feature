@@ -1,11 +1,9 @@
-﻿#2
-Feature: Login user to the Shoppy
-    As a User
-    I want to login 
-    So that I can shop on Shoppy
-
-Scenario: User succesfully login into Shoppy
-    Given user is on the Shoppy login page
-    When he enters valid username and password
-    And he clicks login button
-    Then he should be redirected to the Shoppy home page
+Feature: Logging in 
+    As a visitor
+    I want to be able to log in
+    So that I can purchase tickets and see my tickets
+Scenario: Visitor logs in
+    Given the visitor remembers his username and password
+    And user exists in the database
+    When he enters his username and password and wants to log in
+    Then he will be logged in

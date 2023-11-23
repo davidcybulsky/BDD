@@ -19,7 +19,7 @@ namespace Api.Tests.Behavior.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class LoggingInFeature : object, Xunit.IClassFixture<LoggingInFeature.FixtureData>, System.IDisposable
+    public partial class AddingAnAnimalFeature : object, Xunit.IClassFixture<AddingAnAnimalFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Api.Tests.Behavior.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "LoggingIn.feature"
+#line 1 "AddingAnAnimal.feature"
 #line hidden
         
-        public LoggingInFeature(LoggingInFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public AddingAnAnimalFeature(AddingAnAnimalFeature.FixtureData fixtureData, Api_Tests_Behavior_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Api.Tests.Behavior.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Logging in", "    As a visitor\r\n    I want to be able to log in\r\n    So that I can purchase tic" +
-                    "kets and see my tickets", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Adding an animal", "    As a administrator\r\n    I want to be able to add new animal \r\n    So that I c" +
+                    "an keep it", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Api.Tests.Behavior.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Visitor logs in")]
-        [Xunit.TraitAttribute("FeatureTitle", "Logging in")]
-        [Xunit.TraitAttribute("Description", "Visitor logs in")]
-        public virtual void VisitorLogsIn()
+        [Xunit.SkippableFactAttribute(DisplayName="Administrator adds an animal")]
+        [Xunit.TraitAttribute("FeatureTitle", "Adding an animal")]
+        [Xunit.TraitAttribute("Description", "Administrator adds an animal")]
+        public virtual void AdministratorAddsAnAnimal()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Visitor logs in", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Administrator adds an animal", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -110,16 +110,22 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
-    testRunner.Given("the visitor remembers his username and password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("administrator is logged in to the system", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    testRunner.And("user exists in the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("he sees that list of animals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.When("he enters his username and password and wants to log in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("he gives instruction to go to page for adding animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.Then("he will be logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.And("he enters information about an animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
+    testRunner.And("he gives instruction to add that animal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
+    testRunner.Then("the animal will be added to list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -132,12 +138,12 @@ this.ScenarioInitialize(scenarioInfo);
             
             public FixtureData()
             {
-                LoggingInFeature.FeatureSetup();
+                AddingAnAnimalFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                LoggingInFeature.FeatureTearDown();
+                AddingAnAnimalFeature.FeatureTearDown();
             }
         }
     }
