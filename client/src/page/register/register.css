@@ -1,0 +1,8 @@
+.registerForm_master {
+    position: relative;
+    min-height: 100vh;
+}
+.register_container {
+    position: absolute;
+    top:20%;
+}
