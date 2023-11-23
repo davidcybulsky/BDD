@@ -1,12 +1,8 @@
-// import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import Home from './page/home/Home';
 import Register from './page/register/Register';
-import axios from './api/axios';
 import Login from './page/login/Login';
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import AnimalTable from './shared/component/table/AnimalTable';
+import AuthProvider from './context/AuthProvider';
 
 function App() {
 
@@ -33,7 +29,9 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={routes}/>
+    <AuthProvider>
+      <RouterProvider router={routes}/>
+    </AuthProvider>
   )
 }
 
