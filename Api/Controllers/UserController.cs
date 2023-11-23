@@ -29,7 +29,7 @@ public class UserController : ControllerBase
         return CreatedAtAction(nameof(RegisterUser), new { id = user.Id }, user);
     }
 
-    [HttpGet("login")]
+    [HttpPost("login")]
     public async Task<ActionResult<User>> LogIn([FromBody] LoginUserDto userDto)
     {
         var user = await _userService.LogIn(userDto);
