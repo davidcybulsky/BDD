@@ -45,11 +45,11 @@ public class ReturningATicketSteps
     public async void GivenHeSeesHisTickets()
     {
         await _context.AvailableTickets.AddRangeAsync(new AvailableTicket()
-            {
-                Id = Guid.NewGuid(),
-                Price = 1500,
-                Enclosure = Enclosure.NORTHERN
-            },
+        {
+            Id = Guid.NewGuid(),
+            Price = 1500,
+            Enclosure = Enclosure.NORTHERN
+        },
             new AvailableTicket()
             {
                 Id = Guid.NewGuid(),
@@ -82,7 +82,7 @@ public class ReturningATicketSteps
         boughtTicket.Date = DateTime.Now;
 
         _ = await _ticketService.BuyTicketAsync(_user.Id, boughtTicket);
-        _userTickets = (List<TicketDto>) await _ticketService.GetUsersTicketsAsync(_user.Id);
+        _userTickets = (List<TicketDto>)await _ticketService.GetUsersTicketsAsync(_user.Id);
     }
 
     [When(@"he gives instruction to return some ticket")]
@@ -94,7 +94,7 @@ public class ReturningATicketSteps
     [Then(@"this ticket will be removed from his account")]
     public async void ThenThisTicketWillBeRemovedFromHisAccount()
     {
-        var userTickets = (List<TicketDto>) await _ticketService.GetUsersTicketsAsync(_user.Id);
+        var userTickets = (List<TicketDto>)await _ticketService.GetUsersTicketsAsync(_user.Id);
 
         userTickets.Count.Should().Be(0);
         _removingResult.Should().Be(true);
