@@ -2,7 +2,6 @@
 using Api.Entities;
 using Api.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 
 namespace Api.Controllers;
 
@@ -22,7 +21,7 @@ public class UserController : ControllerBase
     public async Task<ActionResult<User>> RegisterUser([FromBody] RegisterUserDto userDto)
     {
         var user = await _userService.RegisterUser(userDto);
-        if(user == null)
+        if (user == null)
         {
             return BadRequest();
         }
@@ -33,7 +32,7 @@ public class UserController : ControllerBase
     public async Task<ActionResult<User>> LogIn([FromBody] LoginUserDto userDto)
     {
         var user = await _userService.LogIn(userDto);
-        if(user == null)
+        if (user == null)
         {
             return BadRequest();
         }
@@ -44,10 +43,10 @@ public class UserController : ControllerBase
     public async Task<ActionResult<User>> DeleteUser([FromBody] LoginUserDto userDto)
     {
         var user = await _userService.DeleteUser(userDto);
-        if(user == null)
+        if (user == null)
         {
             return BadRequest();
         }
-        return Ok(user);
+        return NoContent();
     }
 }

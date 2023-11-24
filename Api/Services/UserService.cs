@@ -17,7 +17,7 @@ public class UserService : IUserService
 
     public async Task<User> RegisterUser(RegisterUserDto userDto)
     {
-        if(!userDto.Email.Contains("@"))
+        if (!userDto.Email.Contains("@"))
         {
             return null;
         }
@@ -42,7 +42,7 @@ public class UserService : IUserService
     {
         var user = await _context.Users.Where(u => u.Username == userDto.Username).FirstOrDefaultAsync();
 
-        if(userDto.Password != user.Password)
+        if (userDto.Password != user.Password)
         {
             return null;
         }
@@ -54,10 +54,10 @@ public class UserService : IUserService
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userDto.Username);
 
-        if(user is not null && user.Password == userDto.Password)
+        if (user is not null && user.Password == userDto.Password)
         {
             _context.Users.Remove(user);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return user;
         }
         return null;
