@@ -1,5 +1,7 @@
-﻿using Api.Entities;
+﻿using Api.DTO;
+using Api.Entities;
 using Api.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -9,10 +11,12 @@ namespace Api.Controllers
     public class CaretakerController : ControllerBase
     {
         private readonly ICaretakerService _service;
+        private readonly IMapper _mapper;
 
-        public CaretakerController(ICaretakerService service)
+        public CaretakerController(ICaretakerService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
@@ -30,16 +34,18 @@ namespace Api.Controllers
         }
 
         [HttpPost()]
-        public async Task<ActionResult> Post([FromBody] Caretaker caretaker)
+        public async Task<ActionResult> Post([FromBody] CaretakerDto caretakerDto)
         {
-            await _service.Create(caretaker);
+            var carettaker = _mapper.Map<Caretaker>(caretakerDto);
+            await _service.Create(carettaker);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] Caretaker caretaker)
+        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] CaretakerDto caretakerDto)
         {
-            await _service.Update(id, caretaker);
+            var carettaker = _mapper.Map<Caretaker>(caretakerDto);
+            await _service.Update(id, carettaker);
             return NoContent();
         }
 

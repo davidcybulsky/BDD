@@ -1,5 +1,7 @@
-﻿using Api.Entities;
+﻿using Api.DTO;
+using Api.Entities;
 using Api.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -9,10 +11,12 @@ namespace Api.Controllers
     public class AnimalController : ControllerBase
     {
         private readonly IAnimalService _service;
+        private readonly IMapper _mapper;
 
-        public AnimalController(IAnimalService service)
+        public AnimalController(IAnimalService service, IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
@@ -25,7 +29,7 @@ namespace Api.Controllers
         [HttpGet()]
         public async Task<ActionResult<IEnumerable<Animal>>> GetAll(string enclosure = null)
         {
-            if(enclosure is not null)
+            if (enclosure is not null)
             {
                 if (Enum.TryParse<Enclosure>(enclosure, ignoreCase: true, out Enclosure result))
                 {
@@ -44,15 +48,19 @@ namespace Api.Controllers
         }
 
         [HttpPost()]
-        public async Task<ActionResult> Post([FromBody] Animal animal)
+        public async Task<ActionResult> Post([FromBody] AnimalDto animalDto)
         {
+            var animal = _mapper.Map<Animal>(animalDto);
+            animal.Id = Guid.NewGuid();
             await _service.CreateAnimal(animal);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] Animal animal)
+        public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] AnimalDto animalDto)
         {
+            var animal = _mapper.Map<Animal>(animalDto);
+            animal.Id = Guid.NewGuid();
             await _service.UpdateAnimal(id, animal);
             return NoContent();
         }
