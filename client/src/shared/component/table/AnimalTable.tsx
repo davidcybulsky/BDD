@@ -13,7 +13,7 @@ type AnimalTableType = {
 }
 const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     const animals = animalList;
-    const [state, fetch] = useFetch("/test");
+    const [state, fetch] = useFetch("/animal");
     const [_ , deleteData] = useDelete('/test')
     // const [animalList, setAnimalList] = useState<Animal>(initAnimal);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
@@ -23,6 +23,7 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     useEffect(() => {
         const getData = async () => {
             await fetch();
+            console.log(state);
         }
         getData()
     },[])

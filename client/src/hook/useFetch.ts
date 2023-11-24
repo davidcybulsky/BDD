@@ -45,7 +45,9 @@ const useFetch = ( url  : string) => {
         dispatch({ type : ACTIONS.API_REQUEST })
         await axios.get(url)
             .then((res) => {
-                dispatch({ type : ACTIONS.FETCH_DATA, payload: res.data })
+                console.log("FETCH HERE")
+                console.log(res);
+                // dispatch({ type : ACTIONS.FETCH_DATA, payload: res.data })
             })
             .catch((err) => {
                 dispatch({ type : ACTIONS.FETCH_DATA, payload: err.error })
