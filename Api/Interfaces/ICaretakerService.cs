@@ -7,7 +7,7 @@ namespace Api.Interfaces
         Task<Caretaker> ReadById(Guid id);
         Task<IEnumerable<Caretaker>> Read();
         Task Create(Caretaker caretaker);
-        Task Update(Guid id, Caretaker caretaker);
-        Task Delete(Guid id);
+        Task<Caretaker> Update(Guid id, Caretaker caretaker);
+        Task<Caretaker> Delete(Guid id);
     }
 }

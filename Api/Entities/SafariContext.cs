@@ -20,6 +20,11 @@ public class SafariContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //modelBuilder.Entity<Animal>()
+        //   .HasOne(a => a.Caretaker)
+        //   .WithMany(c => c.Animals)
+        //   .HasForeignKey(a => a.CaretakerId);
+
         modelBuilder.Entity<AvailableTicket>().HasData(
             new AvailableTicket()
             {

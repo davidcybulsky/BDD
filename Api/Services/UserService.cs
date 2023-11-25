@@ -15,6 +15,24 @@ public class UserService : IUserService
         _context = context;
     }
 
+    public async Task<IEnumerable<User>> GetAll()
+    {
+        var users = await _context.Users.Include(u => u.Tickets).ToListAsync();
+        return users;
+    }
+
+    public async Task<User> LogIn(LoginUserDto userDto)
+    {
+        var user = await _context.Users.Where(u => u.Username == userDto.Username).FirstOrDefaultAsync();
+
+        if (userDto.Password != user.Password)
+        {
+            return null;
+        }
+
+        return user;
+    }
+
     public async Task<User> RegisterUser(RegisterUserDto userDto)
     {
         if (!userDto.Email.Contains("@"))
@@ -34,19 +52,6 @@ public class UserService : IUserService
 
         _context.Users.Add(user);
         _context.SaveChanges();
-        return user;
-    }
-
-
-    public async Task<User> LogIn(LoginUserDto userDto)
-    {
-        var user = await _context.Users.Where(u => u.Username == userDto.Username).FirstOrDefaultAsync();
-
-        if (userDto.Password != user.Password)
-        {
-            return null;
-        }
-
         return user;
     }
 

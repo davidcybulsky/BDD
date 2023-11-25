@@ -1,4 +1,6 @@
-﻿namespace Api.Entities;
+﻿using System.Text.Json.Serialization;
+
+namespace Api.Entities;
 
 public class Ticket
 {
@@ -7,5 +9,6 @@ public class Ticket
     public DateTime Date { get; set; }
     public Enclosure Enclosure { get; set; }
     public Guid UserId { get; set; }
+    [JsonIgnore]
     public virtual User user { get; set; }
 }

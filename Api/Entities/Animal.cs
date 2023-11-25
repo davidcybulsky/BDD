@@ -1,4 +1,6 @@
-﻿namespace Api.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace Api.Entities
 {
     public class Animal
     {
@@ -7,7 +9,8 @@
         public DateTime DateOfBirth { get; set; }
         public Species Species { get; set; }
         public Enclosure Enclosure { get; set; }
-        public virtual Caretaker Caretaker { get; set; }
+        [JsonIgnore]
+        public Caretaker Caretaker { get; set; }
         public Guid CaretakerId { get; set; }
     }
 }

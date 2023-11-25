@@ -63,6 +63,9 @@ namespace Api.Services
             if (animalInDb is not null)
             {
                 animalInDb.Name = animal.Name;
+                animalInDb.Species = animal.Species;
+                animalInDb.Enclosure = animal.Enclosure;
+                animalInDb.Caretaker = animal.Caretaker;
                 await _context.SaveChangesAsync();
             }
         }

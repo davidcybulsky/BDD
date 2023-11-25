@@ -16,16 +16,11 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-
-    [HttpPost("register")]
-    public async Task<ActionResult<User>> RegisterUser([FromBody] RegisterUserDto userDto)
+    [HttpGet()]
+    public async Task<ActionResult<User>> GetAllUsers()
     {
-        var user = await _userService.RegisterUser(userDto);
-        if (user == null)
-        {
-            return BadRequest();
-        }
-        return CreatedAtAction(nameof(RegisterUser), new { id = user.Id }, user);
+        var users = await _userService.GetAll();
+        return Ok(users);
     }
 
     [HttpPost("login")]
@@ -39,6 +34,19 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
+    [HttpPost("register")]
+    public async Task<ActionResult<User>> RegisterUser([FromBody] RegisterUserDto userDto)
+    {
+        var user = await _userService.RegisterUser(userDto);
+        if (user == null)
+        {
+            return BadRequest();
+        }
+        return CreatedAtAction(nameof(RegisterUser), new { id = user.Id }, user);
+    }
+
+    
+
     [HttpDelete("delete")]
     public async Task<ActionResult<User>> DeleteUser([FromBody] LoginUserDto userDto)
     {
@@ -47,6 +55,6 @@ public class UserController : ControllerBase
         {
             return BadRequest();
         }
-        return NoContent();
+        return Ok(user);
     }
 }

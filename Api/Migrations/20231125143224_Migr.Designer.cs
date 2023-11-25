@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Api.Migrations
 {
     [DbContext(typeof(SafariContext))]
-    [Migration("20231125114200_Migr")]
+    [Migration("20231125143224_Migr")]
     partial class Migr
     {
         /// <inheritdoc />
@@ -51,36 +51,36 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2a867b04-83bb-4b92-bf2a-630989aa6570"),
-                            CaretakerId = new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"),
-                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3005),
+                            Id = new Guid("a8fe3e8b-5004-4ea1-a19e-e7ceb3ae6cad"),
+                            CaretakerId = new Guid("355330e3-29a7-4df2-ba85-d77ae59f19ff"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 15, 32, 24, 28, DateTimeKind.Local).AddTicks(9894),
                             Enclosure = 1,
                             Name = "Tony",
                             Species = 3
                         },
                         new
                         {
-                            Id = new Guid("10aac724-5e33-4132-94d0-0295eb7aa433"),
-                            CaretakerId = new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"),
-                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3051),
+                            Id = new Guid("a3da4956-0e12-4902-ace7-2d5fc15b5d9a"),
+                            CaretakerId = new Guid("355330e3-29a7-4df2-ba85-d77ae59f19ff"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 15, 32, 24, 29, DateTimeKind.Local).AddTicks(87),
                             Enclosure = 3,
                             Name = "Zoe",
                             Species = 0
                         },
                         new
                         {
-                            Id = new Guid("c7006ec8-7ae1-4e66-8ad6-e5b05e368b69"),
-                            CaretakerId = new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"),
-                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3054),
+                            Id = new Guid("88c2fc03-5535-4f43-b329-bbfda7b17e20"),
+                            CaretakerId = new Guid("18c5ed1d-b07c-4e17-822b-c6315de12c3f"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 15, 32, 24, 29, DateTimeKind.Local).AddTicks(90),
                             Enclosure = 0,
                             Name = "Joe",
                             Species = 1
                         },
                         new
                         {
-                            Id = new Guid("1cfad69b-834e-47bc-ab33-a31544d171d7"),
-                            CaretakerId = new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"),
-                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3057),
+                            Id = new Guid("618eb0db-d6e6-4141-9cca-0c3863e83c63"),
+                            CaretakerId = new Guid("18c5ed1d-b07c-4e17-822b-c6315de12c3f"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 15, 32, 24, 29, DateTimeKind.Local).AddTicks(92),
                             Enclosure = 0,
                             Name = "Janusz",
                             Species = 4
@@ -106,25 +106,25 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d7b9141d-7d19-4131-83cb-4aa905ddc0ca"),
+                            Id = new Guid("1e499e0a-7093-45cd-b5e9-852867cdd4b8"),
                             Enclosure = 0,
                             Price = 1500.0
                         },
                         new
                         {
-                            Id = new Guid("5a03ce0b-b477-477c-ab59-d88bd4bca3b0"),
+                            Id = new Guid("b17f87c2-9c50-444b-a25b-50d55d09319e"),
                             Enclosure = 1,
                             Price = 2400.0
                         },
                         new
                         {
-                            Id = new Guid("14160af4-c8e4-4729-bf8e-b12d7531a645"),
+                            Id = new Guid("a6d53c8c-6fbd-47c7-8511-90f05bc89601"),
                             Enclosure = 2,
                             Price = 1200.0
                         },
                         new
                         {
-                            Id = new Guid("3f589716-5814-470f-ab6d-5df6970a005b"),
+                            Id = new Guid("19f502a3-e35c-42ed-820c-7ced9a5b1d96"),
                             Enclosure = 3,
                             Price = 3000.0
                         });
@@ -151,13 +151,13 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"),
+                            Id = new Guid("355330e3-29a7-4df2-ba85-d77ae59f19ff"),
                             FirstName = "Albert",
                             LastName = "Szybkipuls"
                         },
                         new
                         {
-                            Id = new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"),
+                            Id = new Guid("18c5ed1d-b07c-4e17-822b-c6315de12c3f"),
                             FirstName = "Norbert",
                             LastName = "Firanka"
                         });
@@ -190,27 +190,27 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7da223f0-26cb-4e00-a811-3c862cc13ad1"),
-                            Date = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3093),
+                            Id = new Guid("5121d3db-84d5-4b73-a8ec-cdf99e6add94"),
+                            Date = new DateTime(2023, 11, 25, 15, 32, 24, 29, DateTimeKind.Local).AddTicks(127),
                             Enclosure = 1,
                             Price = 14.5,
-                            UserId = new Guid("9da51020-1be3-4f8c-bace-d6d51a472082")
+                            UserId = new Guid("3a68e903-2458-4834-9e2f-9f6f8a6c43b0")
                         },
                         new
                         {
-                            Id = new Guid("e8520710-2754-4bf3-98f5-de97090d9cfd"),
-                            Date = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3099),
+                            Id = new Guid("94ff25a1-7d7f-4887-85e4-22aeaf15d70d"),
+                            Date = new DateTime(2023, 11, 25, 15, 32, 24, 29, DateTimeKind.Local).AddTicks(130),
                             Enclosure = 2,
                             Price = 16.5,
-                            UserId = new Guid("9da51020-1be3-4f8c-bace-d6d51a472082")
+                            UserId = new Guid("3a68e903-2458-4834-9e2f-9f6f8a6c43b0")
                         },
                         new
                         {
-                            Id = new Guid("85d4a056-970b-4bd6-b247-9a81499cf88f"),
-                            Date = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3101),
+                            Id = new Guid("728f5a2a-87b2-4dcc-93cf-c68d52ba0586"),
+                            Date = new DateTime(2023, 11, 25, 15, 32, 24, 29, DateTimeKind.Local).AddTicks(135),
                             Enclosure = 3,
                             Price = 17.5,
-                            UserId = new Guid("f1a6610b-655a-4b3c-a88e-8431ea67ce9b")
+                            UserId = new Guid("e21c1fc4-99b7-4dfd-acaf-c46cb6b1cd2f")
                         });
                 });
 
@@ -242,7 +242,7 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9da51020-1be3-4f8c-bace-d6d51a472082"),
+                            Id = new Guid("3a68e903-2458-4834-9e2f-9f6f8a6c43b0"),
                             Email = "skunks@skunks.com",
                             IsAdmin = false,
                             Password = "haslo123",
@@ -250,7 +250,7 @@ namespace Api.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f1a6610b-655a-4b3c-a88e-8431ea67ce9b"),
+                            Id = new Guid("e21c1fc4-99b7-4dfd-acaf-c46cb6b1cd2f"),
                             Email = "czad@man.com",
                             IsAdmin = true,
                             Password = "password",

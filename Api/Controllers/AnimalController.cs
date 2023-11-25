@@ -77,7 +77,7 @@ namespace Api.Controllers
             {
                 return BadRequest();
             }
-            animal.Id = Guid.NewGuid();
+            // animal.Id = Guid.NewGuid();
             await _service.UpdateAnimal(id, animal);
             return Ok(animal);
         }
