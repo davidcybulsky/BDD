@@ -54,11 +54,11 @@ public class TicketController : ControllerBase
     public async Task<ActionResult<bool>> ReturnUsersTicketAsync([FromQuery] Guid userId, Guid ticketId)
     {
         var result = await _ticketService.ReturnUsersTicketAsync(userId, ticketId);
-        if(result == null)
+        if(result == false)
         {
             return BadRequest();
         }
-        return NotFound();
+        return Ok();
     }
 
     [HttpGet]

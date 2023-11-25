@@ -8,5 +8,6 @@ namespace Api.DTO
         public DateTime DateOfBirth { get; set; }
         public Species Species { get; set; }
         public Enclosure Enclosure { get; set; }
+        public Guid CaretakerId { get; set; }
     }
 }

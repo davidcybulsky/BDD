@@ -19,7 +19,7 @@ namespace Api.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAnimal(Guid id)
+        public async Task<Animal> DeleteAnimal(Guid id)
         {
             var animal = await _context.Animals.FirstOrDefaultAsync(a => a.Id == id);
             if (animal is not null)
@@ -27,6 +27,7 @@ namespace Api.Services
                 _context.Remove(animal);
                 await _context.SaveChangesAsync();
             }
+            return animal;
         }
 
         public async Task<Animal> GetAnimal(Guid id)

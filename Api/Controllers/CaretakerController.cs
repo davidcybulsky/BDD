@@ -38,7 +38,7 @@ namespace Api.Controllers
         {
             var carettaker = _mapper.Map<Caretaker>(caretakerDto);
             await _service.Create(carettaker);
-            return Ok();
+            return Ok(carettaker);
         }
 
         [HttpPut("{id}")]
