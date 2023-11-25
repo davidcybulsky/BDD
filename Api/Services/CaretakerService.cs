@@ -19,7 +19,7 @@ namespace Api.Services
             await _dbcontext.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
             var caretaker = await _dbcontext.Caretakers.FirstOrDefaultAsync(x => x.Id == id);
             if (caretaker is not null)
@@ -35,13 +35,13 @@ namespace Api.Services
             return caretakers;
         }
 
-        public async Task<Caretaker> ReadById(int id)
+        public async Task<Caretaker> ReadById(Guid id)
         {
             var caretaker = await _dbcontext.Caretakers.FirstOrDefaultAsync(x => x.Id == id);
             return caretaker;
         }
 
-        public async Task Update(int id, Caretaker caretaker)
+        public async Task Update(Guid id, Caretaker caretaker)
         {
             var caretakerInDb = await _dbcontext.Caretakers.FirstOrDefaultAsync(x => x.Id == id);
             caretakerInDb.FirstName = caretaker.FirstName;

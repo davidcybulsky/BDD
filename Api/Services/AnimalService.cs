@@ -41,7 +41,7 @@ namespace Api.Services
             return animals;
         }
 
-        public async Task<IEnumerable<Animal>> GetAnimalsByCaretakerId(int caretakerId)
+        public async Task<IEnumerable<Animal>> GetAnimalsByCaretakerId(Guid caretakerId)
         {
             var animals = await _context.Caretakers
                                 .Include(x => x.Animals)

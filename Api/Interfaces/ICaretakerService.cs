@@ -4,10 +4,10 @@ namespace Api.Interfaces
 {
     public interface ICaretakerService
     {
-        Task<Caretaker> ReadById(int id);
+        Task<Caretaker> ReadById(Guid id);
         Task<IEnumerable<Caretaker>> Read();
         Task Create(Caretaker caretaker);
-        Task Update(int id, Caretaker caretaker);
-        Task Delete(int id);
+        Task Update(Guid id, Caretaker caretaker);
+        Task Delete(Guid id);
     }
 }

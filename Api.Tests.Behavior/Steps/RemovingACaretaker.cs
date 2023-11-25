@@ -10,7 +10,7 @@ namespace Api.Tests.Behavior.Steps
     {
         private readonly SafariContext _context;
         private readonly ICaretakerService _service;
-        private static int caretakerId = 1;
+        private static Guid caretakerId = Guid.NewGuid();
         private readonly List<Caretaker> _caretakers = new()
         {
             new Caretaker()
@@ -21,19 +21,19 @@ namespace Api.Tests.Behavior.Steps
             },
             new Caretaker()
             {
-            Id = 2,
+            Id = Guid.NewGuid(),
                 FirstName = "Damian",
                 LastName = "Dziekan"
             },
             new Caretaker()
             {
-            Id = 3,
+            Id = Guid.NewGuid(),
                 FirstName = "Piotr",
                 LastName = "Nowak"
             },
             new Caretaker()
             {
-            Id = 4,
+            Id = Guid.NewGuid(),
                 FirstName = "Zbigniew",
                 LastName = "Kowal"
             }

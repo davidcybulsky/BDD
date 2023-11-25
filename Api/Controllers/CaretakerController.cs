@@ -20,7 +20,7 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Caretaker>> Get([FromRoute] int id)
+        public async Task<ActionResult<Caretaker>> Get([FromRoute] Guid id)
         {
             var caretaker = await _service.ReadById(id);
             return Ok(caretaker);
@@ -42,7 +42,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] CaretakerDto caretakerDto)
+        public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] CaretakerDto caretakerDto)
         {
             var carettaker = _mapper.Map<Caretaker>(caretakerDto);
             await _service.Update(id, carettaker);
@@ -50,7 +50,7 @@ namespace Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete([FromRoute] int id)
+        public async Task<ActionResult> Delete([FromRoute] Guid id)
         {
             await _service.Delete(id);
             return NoContent();

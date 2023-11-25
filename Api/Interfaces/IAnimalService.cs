@@ -11,7 +11,7 @@ namespace Api.Interfaces
         Task DeleteAnimal(Guid id);
 
         Task<IEnumerable<Animal>> GetAnimalsBySpecies(Species species);
-        Task<IEnumerable<Animal>> GetAnimalsByCaretakerId(int caretakerId);
+        Task<IEnumerable<Animal>> GetAnimalsByCaretakerId(Guid caretakerId);
         Task<IEnumerable<Animal>> GetAnimalsByEnclosure(Enclosure enclosure);
 
 

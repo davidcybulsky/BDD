@@ -14,25 +14,25 @@ namespace Api.Tests.Behavior.Steps
         {
             new Caretaker()
             {
-                Id = 1,
+                Id = Guid.NewGuid(),
                 FirstName = "Jan",
                 LastName = "Kowalski"
             },
             new Caretaker()
             {
-                Id = 2,
+                Id = Guid.NewGuid(),
                 FirstName = "Damian",
                 LastName = "Dziekan"
             },
             new Caretaker()
             {
-                Id = 3,
+                Id = Guid.NewGuid(),
                 FirstName = "Piotr",
                 LastName = "Nowak"
             },
             new Caretaker()
             {
-                Id = 4,
+                Id = Guid.NewGuid(),
                 FirstName = "Zbigniew",
                 LastName = "Kowal"
             }
@@ -73,7 +73,7 @@ namespace Api.Tests.Behavior.Steps
         {
             caretaker = new()
             {
-                Id = 5,
+                Id = Guid.NewGuid(),
                 FirstName = "Jan",
                 LastName = "Sobol"
             };
