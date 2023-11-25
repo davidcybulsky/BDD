@@ -8,7 +8,7 @@ function App() {
 
   const routes = createBrowserRouter([
     {
-      path: "/login",
+      path: "/",
       element:  (
         <Login/>
       )
@@ -20,7 +20,7 @@ function App() {
       )
     },
     {
-      path: "/",
+      path: "/app",
       element : (
         <Home/>
       )

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useState, useReducer } from 'react'
 import axios from '../api/axios'
 // type useFetchType = {
 //     url : string
@@ -40,22 +40,20 @@ const reducer = (state : any, action : any) => {
 
 const useFetch = ( url  : string) => {
     const [state,dispatch] = useReducer(reducer, initState);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const fetchData = async () => {
         dispatch({ type : ACTIONS.API_REQUEST })
         await axios.get(url)
             .then((res) => {
-                console.log("FETCH HERE")
-                console.log(res);
-                // dispatch({ type : ACTIONS.FETCH_DATA, payload: res.data })
+                dispatch({ type : ACTIONS.FETCH_DATA, payload: res.data })
             })
             .catch((err) => {
                 dispatch({ type : ACTIONS.FETCH_DATA, payload: err.error })
             })
-        return state;
     }
 
-    return [state, fetchData]
+    return [state, fetchData, isLoading]
 }
 
 export default useFetch

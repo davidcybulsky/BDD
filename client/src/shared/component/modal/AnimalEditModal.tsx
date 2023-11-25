@@ -1,7 +1,7 @@
 import { Modal, ModalBody, ModalHeader, Form, Button, Stack } from "react-bootstrap"
 import { Animal } from "../../lib/types"
 import { useState, useEffect } from "react"
-import { species, caretakers, safari, initAnimal } from "../../../util/util"
+import { species , safari, initAnimal } from "../../../util/util"
 import usePut from "../../../hook/usePut"
 
 type AnimalEditModalType = {
@@ -68,28 +68,12 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal} : AnimalEdi
                         </Form.Label>
                         <Form.Select
                             id="animalEditSpecie"
-                            value={editedAnimal.specie}
-                            onChange={(e) => setEditedAnimal({...editedAnimal, specie : e.target.value})}
+                            value={editedAnimal.species}
+                            onChange={(e) => setEditedAnimal({...editedAnimal, species : e.target.value})}
                         >
                             {
                                 species.map((s, i) => (
                                     <option key={s} value={s}>{s}</option>
-                                ))
-                            }
-                        </Form.Select>
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label htmlFor="animalEditCaretaker">
-                            Caretaker
-                        </Form.Label>
-                        <Form.Select
-                            id="animalEditCaretaker"
-                            value={editedAnimal.caretaker}
-                            onChange={(e) => setEditedAnimal({...editedAnimal, caretaker : e.target.value})}
-                        >
-                            {
-                                caretakers.map((s, i) => (
-                                    <option key={s.name} value={`${s.name}` + `${ s.surename}`}>{s.name} {s.surename}</option>
                                 ))
                             }
                         </Form.Select>

@@ -1,5 +1,8 @@
 import React from 'react'
+import { useContext } from "react";
 import { NavLink, Nav, Navbar, Button } from 'react-bootstrap'
+import { AuthContext } from '../../../context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 type NavHomeType = {
     handleOnDisplayChange :(navLink : string) => void,
@@ -7,9 +10,12 @@ type NavHomeType = {
 }
 
 const NavHome = ({ handleOnDisplayChange, handleBuyTicket } : NavHomeType ) => {
+    const  { logout } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const logout = () => {
-
+    const handleOnLogout = () => {
+        logout();
+        navigate("/")
     }
 
     return (
@@ -21,7 +27,7 @@ const NavHome = ({ handleOnDisplayChange, handleBuyTicket } : NavHomeType ) => {
             <Button onClick={handleBuyTicket} className='me-3'>
                 Buy ticket
             </Button>
-            <Button onClick={logout} className='me-5'>
+            <Button onClick={handleOnLogout} className='me-5'>
                 Logout
             </Button>
             

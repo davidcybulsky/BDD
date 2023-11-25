@@ -10,7 +10,6 @@ const EmailGroup = ({ handleEmailChange, email } : EmailGroupType) => {
     return (
         <FormGroup className='col-md-6 mx-auto'>
             <FloatingLabel
-                controlId='emailLabel'
                 label='email'
             >
                 <Form.Control

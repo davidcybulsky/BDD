@@ -1,20 +1,23 @@
 export type UserType = {
+    // id : string | undefined
     email? : string | undefined,
-    login : string,
+    username : string,
     password : string
 }
 export type Animal = {
-    id : number
+    id : string
     name : string,
-    specie : string,
-    caretaker : string,
+    species : string,
+    dateOfBirth : string,
+    caretakerId : string,
     enclosure : string
 }
 export type AnimalListType = {
-    id : number
+    id : string
     name : string,
-    specie : string,
-    caretaker : string,
+    species : string,
+    dateOfBirth : string,
+    caretakerId: string,
     enclosure : string
 }[]
 
@@ -23,13 +26,13 @@ export type TicketDataType = {
     safari : string
 }
 export type CaretakerListType = {
-    id : number, 
-    name : string,
-    surename : string
+    id : string, 
+    firstName : string,
+    lastName : string
 
 }[]
 export type CaretakerType = {
-    id : number, 
-    name : string,
-    surename : string
+    id : string, 
+    firstName : string,
+    lastName : string
 }

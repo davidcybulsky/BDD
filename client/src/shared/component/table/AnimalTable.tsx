@@ -1,9 +1,8 @@
 import { useState, useEffect }  from 'react'
-import { Button, Table } from 'react-bootstrap'
-import { Animal } from '../../lib/types'
+import { Button, Table, Spinner } from 'react-bootstrap'
+import { Animal, AnimalListType } from '../../lib/types'
 import AnimalEditModal from '../modal/AnimalEditModal';
-import { initAnimal } from '../../../util/util';
-import { animalList } from '../../../util/util';
+import { initAnimal, initAnimalList } from '../../../util/util';
 import useFetch from '../../../hook/useFetch';
 import useDelete from '../../../hook/useDelete';
 
@@ -11,27 +10,35 @@ type AnimalTableType = {
     // animalList : AnimalListType,
     isAdmin : boolean
 }
+const dataAnimalConvert : { [key : string] : string } = {
+    "0" : "DUCK",
+    "1" : "BISON",
+    "2" : "WOLF",
+    "3" : "EAGLE",
+    "4" : "MOOSE"
+}
+const dataEnclosureConvert : { [key : string] : string} = {
+    "0" : "NORTHERN",
+    "1" : "SOUTHERN",
+    "2" : "EASTERN",
+    "3" : "WESTERN"
+}
 const AnimalTable = ( { isAdmin } : AnimalTableType) => {
-    const animals = animalList;
-    const [state, fetch] = useFetch("/animal");
+    const [stateAnimal, fetchAnimal] = useFetch("/animal");
     const [_ , deleteData] = useDelete('/test')
-    // const [animalList, setAnimalList] = useState<Animal>(initAnimal);
+    const [animalList, setAnimalList] = useState<AnimalListType>(initAnimalList);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
     const [editAnimal, setEditAnimal] = useState<Animal>(initAnimal);
-    const [checker, setChecker] = useState<string>("siema");
+    useEffect(() => {
+        fetchAnimal()
+    },[])
 
     useEffect(() => {
-        const getData = async () => {
-            await fetch();
-            console.log(state);
+        if(stateAnimal.data) {
+            const convertedAnimal = convertEnclosureFromNumberToString(stateAnimal.data)
+            setAnimalList(convertSpeciesFromNumberToString(convertedAnimal))
         }
-        getData()
-    },[])
-    useEffect(() => {
-        if(state.data) {
-            setChecker(state.data);
-        }
-    },[state])
+    },[stateAnimal])
 
     const handleAnimalOnEdit = (animal : Animal) => {
         setEditAnimal(animal);
@@ -40,16 +47,29 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     const handleAnimalOnDelete = (animal : Animal) => {
         deleteData();
     }
-
+    const convertSpeciesFromNumberToString = (animals : AnimalListType) => {
+        const animalToConvert = [...animals];
+        const convertedAnimal = animalToConvert.map((animal : Animal) => {
+            animal.species = dataAnimalConvert[animal.species];
+            return animal
+        })
+        return convertedAnimal;
+    }
+    const convertEnclosureFromNumberToString = (animals : AnimalListType) => {
+        const animalToConvert = [...animals];
+        const convertedAnimal = animalToConvert.map((animal : Animal) => {
+            animal.enclosure = dataEnclosureConvert[animal.enclosure];
+            return animal
+        })
+        return convertedAnimal;
+    }
     return (
     <>
-        { checker }
         <Table>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Specie</th>
-                    <th>Caretaker</th>
+                    <th>Species</th>
                     <th>Enclosure</th>
                     {
                         isAdmin && (
@@ -72,8 +92,11 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
                                 {
                                     (Object.keys(animal) as Array<keyof Animal>).map((key : keyof Animal) => (
                                         <>
-                                            <td key={key + animal.id}>{animal[key]}</td>
-        
+                                            {
+                                                key !== 'id' ? key !== "dateOfBirth" ? 
+                                                key !== "caretakerId" ? <td>{animal[key]}</td> 
+                                                : null : null : null
+                                            }
                                         </>
                                     ))
                                 }

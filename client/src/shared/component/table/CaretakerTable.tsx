@@ -3,16 +3,17 @@ import { useState } from 'react';
 import { Table, Button } from "react-bootstrap";
 import { CaretakerListType, CaretakerType } from '../../lib/types';
 import CaretakerEditModal from '../modal/CaretakerEditModal';
-import { initCaretaker } from '../../../util/util';
+import { initCaretaker, initCaretakerList } from '../../../util/util';
 
 type CaretakerTableType = {
     caretakerList : CaretakerListType
 }
 
-const CaretakerTable = ({ caretakerList } : CaretakerTableType) => {
+const CaretakerTable = () => {
     // const { data , loading, error } = useFetch("/test");
     const [editedCaretaker, setEditedCaretaker] = useState<CaretakerType>(initCaretaker);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
+    const [caretakerList, setCaretakerList] = useState(initCaretakerList);
 
     const handleCaretakerOnEdit = (caretaker : CaretakerType) => {
         setEditedCaretaker(caretaker)
@@ -37,10 +38,10 @@ const CaretakerTable = ({ caretakerList } : CaretakerTableType) => {
             </thead>
             <tbody>
                 {
-                    caretakerList.map((caretaker, index) => (
+                    caretakerList.map((caretaker : any, index : any) => (
                         <tr>
                             {
-                                (Object.keys(caretaker) as Array<keyof CaretakerType>).map((key : keyof CaretakerType) => (
+                                (Object.keys(caretaker) as Array<keyof any>).map((key : any) => (
                                     <td key={key}>{caretaker[key]}</td>
                                 ))
                             }

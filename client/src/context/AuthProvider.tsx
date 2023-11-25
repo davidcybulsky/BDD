@@ -1,39 +1,35 @@
 import React, { ReactNode, useState, createContext } from 'react'
-
 type AuthProviderPropsType = {
     children : ReactNode
 }
-type UserType = {
-    id : string, 
-    username : string,
-    email : string,
-    password : string,
-    isAdmin : boolean
-}
+
 type ContextType = {
-    user : UserType,
-    login : (user : UserType) => void,
+    user : UserTypeCnt,
+    login : (user : UserTypeCnt) => void,
     logout : () => void
 }
-
-const initUser : UserType = {
-    id : '',
-    username : '',
-    email : '',
-    password : '',
-    isAdmin : false
+export type UserTypeCnt = {
+    username? : string | undefined,
+    email : string,
+    password : string 
 }
 
-const AuthContext = createContext<ContextType>({
+const initUser : UserTypeCnt = {
+    username : '',
+    email : '',
+    password : ''
+}
+
+export const AuthContext = createContext<ContextType>({
     user : initUser,
     login : () => undefined,
     logout : () => undefined
 });
 
 const AuthProvider = ({ children } : AuthProviderPropsType) => {
-    const [user, setUser] = useState<UserType>(initUser);
+    const [user, setUser] = useState<UserTypeCnt>(initUser);
     
-    const login = (user : UserType) => {
+    const login = (user : UserTypeCnt) => {
         if(user != initUser) {
             localStorage.setItem('user', JSON.stringify(user));
             setUser(user);

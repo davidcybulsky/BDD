@@ -38,8 +38,8 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker} : Car
                                 id='caretakerNameLabel'
                                 type="text"
                                 placeholder='Name'
-                                value={caretaker.name}
-                                onChange={(e) => setEditedCaretaker({ ...editedCaretaker, name : e.target.value})}
+                                value={caretaker.firstName}
+                                onChange={(e) => setEditedCaretaker({ ...editedCaretaker, firstName : e.target.value})}
                             />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -50,8 +50,8 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker} : Car
                                 id='caretakerSurenameLabel'
                                 type="text"
                                 placeholder='Name'
-                                value={caretaker.surename}
-                                onChange={(e) => setEditedCaretaker({ ...editedCaretaker, surename : e.target.value})}
+                                value={caretaker.lastName}
+                                onChange={(e) => setEditedCaretaker({ ...editedCaretaker, lastName : e.target.value})}
                             />
                     </Form.Group>
                     <Stack direction='horizontal' gap={2} className='justify-content-center'>

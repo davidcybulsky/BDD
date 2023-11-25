@@ -10,7 +10,6 @@ const PasswordGroup = ({ password, handlePasswordChange} : PasswordGroupType) =>
   return (
     <Form.Group className='col-md-6 mx-auto'>
         <FloatingLabel
-            controlId='passwordLabel'
             label='password'
         >
             <Form.Control 

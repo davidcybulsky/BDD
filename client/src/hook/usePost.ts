@@ -39,6 +39,7 @@ const usePost = ({ url ,  body} : usePostType) => {
         await axios.post(url,body)
             .then((res) => {
                 dispatch({ type: ACTIONS.POST_DATA })
+                return res;
             })
             .catch((err) => {
                 dispatch({ type: ACTIONS.ERROR })
