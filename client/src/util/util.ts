@@ -36,7 +36,19 @@ export const initTicketData : TicketDataType = {
     date : '',
     safari : ''
 }
-
+export const dataAnimalConvert : { [key : string] : string } = {
+    "0" : "DUCK",
+    "1" : "BISON",
+    "2" : "WOLF",
+    "3" : "EAGLE",
+    "4" : "MOOSE"
+}
+export const dataEnclosureConvert : { [key : string] : string} = {
+    "0" : "NORTHERN",
+    "1" : "SOUTHERN",
+    "2" : "EASTERN",
+    "3" : "WESTERN"
+}
 
 // export const animalList : AnimalListType = [
 //     {

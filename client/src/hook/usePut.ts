@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react'
 import axios from '../api/axios'
+import { createJSDocSignature } from 'typescript'
 type usePostType = {
     url : string, 
     body : any 
@@ -36,6 +37,8 @@ const usePut = ({ url , body} : usePostType) => {
     const [state,dispatch] = useReducer( reducer, initState);
     const putData = async () => {
         dispatch({ type: ACTIONS.API_REQUEST })
+        console.log(body);
+        console.log(url);
         await axios.put(url,body)
             .then((res) => {
                 dispatch({ type: ACTIONS.PUT_DATA })

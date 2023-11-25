@@ -5,33 +5,24 @@ import AnimalEditModal from '../modal/AnimalEditModal';
 import { initAnimal, initAnimalList } from '../../../util/util';
 import useFetch from '../../../hook/useFetch';
 import useDelete from '../../../hook/useDelete';
-
+import { dataAnimalConvert, dataEnclosureConvert } from '../../../util/util';
 type AnimalTableType = {
     // animalList : AnimalListType,
     isAdmin : boolean
 }
-const dataAnimalConvert : { [key : string] : string } = {
-    "0" : "DUCK",
-    "1" : "BISON",
-    "2" : "WOLF",
-    "3" : "EAGLE",
-    "4" : "MOOSE"
-}
-const dataEnclosureConvert : { [key : string] : string} = {
-    "0" : "NORTHERN",
-    "1" : "SOUTHERN",
-    "2" : "EASTERN",
-    "3" : "WESTERN"
-}
+
 const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     const [stateAnimal, fetchAnimal] = useFetch("/animal");
-    const [_ , deleteData] = useDelete('/test')
+    const [animalIdToDelete, setAnimalIdToDelete] = useState<string>('');
+    const [_ , deleteData] = useDelete(`/animal/${animalIdToDelete}`)
     const [animalList, setAnimalList] = useState<AnimalListType>(initAnimalList);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
     const [editAnimal, setEditAnimal] = useState<Animal>(initAnimal);
+    const [reFetch, setReFetch] = useState(false);
+
     useEffect(() => {
         fetchAnimal()
-    },[])
+    },[reFetch])
 
     useEffect(() => {
         if(stateAnimal.data) {
@@ -45,7 +36,8 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
         setEditModal(true);
     }
     const handleAnimalOnDelete = (animal : Animal) => {
-        deleteData();
+        deleteData(`/animal/${animal.id}`);
+        triggerReFetching();
     }
     const convertSpeciesFromNumberToString = (animals : AnimalListType) => {
         const animalToConvert = [...animals];
@@ -62,6 +54,11 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
             return animal
         })
         return convertedAnimal;
+    }
+    const triggerReFetching = () => {
+        setTimeout(() => {
+            setReFetch(!reFetch);
+        },1)
     }
     return (
     <>
@@ -126,6 +123,7 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
             toggleEditModal={toggleEditModal}
             handleModalHide={() => setEditModal(false)}
             animal={editAnimal}
+            triggerReFetching={triggerReFetching}
         />
     </>
     )

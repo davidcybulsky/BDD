@@ -33,9 +33,10 @@ const reducer = (state : any, action : any) => {
 
 const useDelete = ( url  : string) => {
     const [state,dispatch] = useReducer( reducer, initState);
-    const deleteData = async () => {
+    const deleteData = async (url2 : string) => {
+        console.log(url2);
         dispatch({ type: ACTIONS.API_REQUEST })
-        await axios.delete(url)
+        await axios.delete(url2)
             .then((res) => {
                 dispatch({ type: ACTIONS.DELETE_DATA })
             })

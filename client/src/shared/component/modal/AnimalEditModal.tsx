@@ -1,32 +1,62 @@
 import { Modal, ModalBody, ModalHeader, Form, Button, Stack } from "react-bootstrap"
 import { Animal } from "../../lib/types"
 import { useState, useEffect } from "react"
-import { species , safari, initAnimal } from "../../../util/util"
+import { species , safari, initAnimal, dataAnimalConvert, dataEnclosureConvert } from "../../../util/util"
 import usePut from "../../../hook/usePut"
 
 type AnimalEditModalType = {
     toggleEditModal : boolean,
     handleModalHide : () => void,
     animal : Animal
+    triggerReFetching : () => void
 }
-
-const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal} : AnimalEditModalType) => {
+type AnimalTypeConverted = {
+    id : string
+    name : string,
+    species : number,
+    dateOfBirth : string,
+    caretakerId : string,
+    enclosure : number
+}
+const initAnimalConverted : AnimalTypeConverted = {
+    id : "",
+    name : "",
+    species : -1,
+    dateOfBirth : "",
+    caretakerId : "",
+    enclosure : -1
+}
+const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFetching } : AnimalEditModalType) => {
     const [editedAnimal, setEditedAnimal] = useState<Animal>(animal);
-    const [state, putData] = usePut({ url : '/text', body :  editedAnimal });
+    const [animalToSend, setAnimalToSend] = useState<AnimalTypeConverted>(initAnimalConverted);
+    const [state, putData] = usePut({ url : `/animal/${editedAnimal.id}`, body :  animalToSend });
 
     useEffect(() => {
         setEditedAnimal(animal);
     },[animal])
 
     const handleEditAnimalSubmit = () => {
-        console.log(editedAnimal);
-        // putData();
+        convertSpeciesAndEnclosureFromStringToNumber(editedAnimal);
+        console.log(animalToSend)
+        putData();
+        triggerReFetching()
+        handleModalHide();
     }
     const handleModalHideAndDataClear = () => {
         setEditedAnimal(initAnimal);
         handleModalHide();
     }
-    
+    const convertSpeciesAndEnclosureFromStringToNumber = (editAnimal : Animal) => {
+        animalToSend.id = editAnimal.id
+        animalToSend.name = editAnimal.name
+        animalToSend.dateOfBirth = editAnimal.dateOfBirth;
+        const reversedDataAnimalConvert : any= Object.fromEntries(Object.entries(dataAnimalConvert).map(([key,value]) => [value,key]))
+        animalToSend.species = parseInt(reversedDataAnimalConvert[editAnimal.species]);
+        const reversedDataEnclosureConvert = Object.fromEntries(Object.entries(dataEnclosureConvert).map(([key,value]) => [value,key]))
+        animalToSend.enclosure = parseInt(reversedDataEnclosureConvert[editAnimal.enclosure]);
+        animalToSend.caretakerId = editAnimal.caretakerId;
+        setAnimalToSend(animalToSend);
+    }
     return (
         <Modal show={toggleEditModal} onHide={handleModalHideAndDataClear}>
             <ModalHeader>
