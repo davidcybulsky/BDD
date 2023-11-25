@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Migr : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,8 +30,7 @@ namespace Api.Migrations
                 name: "Caretakers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false)
                 },
@@ -64,7 +63,7 @@ namespace Api.Migrations
                     DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Species = table.Column<int>(type: "INTEGER", nullable: false),
                     Enclosure = table.Column<int>(type: "INTEGER", nullable: false),
-                    CaretakerId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CaretakerId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,10 +102,49 @@ namespace Api.Migrations
                 columns: new[] { "Id", "Enclosure", "Price" },
                 values: new object[,]
                 {
-                    { new Guid("89db1c2a-706c-4079-af5c-fa7f9cbd6ac9"), 3, 3000.0 },
-                    { new Guid("ba0e8b56-7429-41cd-a3c6-848d539cc730"), 0, 1500.0 },
-                    { new Guid("de2bf75e-7300-4c29-8a5c-e457037bfaf3"), 1, 2400.0 },
-                    { new Guid("e9442f28-227e-4829-8601-bf3ef116f8d4"), 2, 1200.0 }
+                    { new Guid("14160af4-c8e4-4729-bf8e-b12d7531a645"), 2, 1200.0 },
+                    { new Guid("3f589716-5814-470f-ab6d-5df6970a005b"), 3, 3000.0 },
+                    { new Guid("5a03ce0b-b477-477c-ab59-d88bd4bca3b0"), 1, 2400.0 },
+                    { new Guid("d7b9141d-7d19-4131-83cb-4aa905ddc0ca"), 0, 1500.0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Caretakers",
+                columns: new[] { "Id", "FirstName", "LastName" },
+                values: new object[,]
+                {
+                    { new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"), "Norbert", "Firanka" },
+                    { new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"), "Albert", "Szybkipuls" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "IsAdmin", "Password", "Username" },
+                values: new object[,]
+                {
+                    { new Guid("9da51020-1be3-4f8c-bace-d6d51a472082"), "skunks@skunks.com", false, "haslo123", "skunksior" },
+                    { new Guid("f1a6610b-655a-4b3c-a88e-8431ea67ce9b"), "czad@man.com", true, "password", "czadoman" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Animals",
+                columns: new[] { "Id", "CaretakerId", "DateOfBirth", "Enclosure", "Name", "Species" },
+                values: new object[,]
+                {
+                    { new Guid("10aac724-5e33-4132-94d0-0295eb7aa433"), new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3051), 3, "Zoe", 0 },
+                    { new Guid("1cfad69b-834e-47bc-ab33-a31544d171d7"), new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3057), 0, "Janusz", 4 },
+                    { new Guid("2a867b04-83bb-4b92-bf2a-630989aa6570"), new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3005), 1, "Tony", 3 },
+                    { new Guid("c7006ec8-7ae1-4e66-8ad6-e5b05e368b69"), new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3054), 0, "Joe", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Tickets",
+                columns: new[] { "Id", "Date", "Enclosure", "Price", "UserId" },
+                values: new object[,]
+                {
+                    { new Guid("7da223f0-26cb-4e00-a811-3c862cc13ad1"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3093), 1, 14.5, new Guid("9da51020-1be3-4f8c-bace-d6d51a472082") },
+                    { new Guid("85d4a056-970b-4bd6-b247-9a81499cf88f"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3101), 3, 17.5, new Guid("f1a6610b-655a-4b3c-a88e-8431ea67ce9b") },
+                    { new Guid("e8520710-2754-4bf3-98f5-de97090d9cfd"), new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3099), 2, 16.5, new Guid("9da51020-1be3-4f8c-bace-d6d51a472082") }
                 });
 
             migrationBuilder.CreateIndex(

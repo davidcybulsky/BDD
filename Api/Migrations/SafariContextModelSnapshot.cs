@@ -23,8 +23,8 @@ namespace Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CaretakerId")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid>("CaretakerId")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("TEXT");
@@ -44,6 +44,44 @@ namespace Api.Migrations
                     b.HasIndex("CaretakerId");
 
                     b.ToTable("Animals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("2a867b04-83bb-4b92-bf2a-630989aa6570"),
+                            CaretakerId = new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3005),
+                            Enclosure = 1,
+                            Name = "Tony",
+                            Species = 3
+                        },
+                        new
+                        {
+                            Id = new Guid("10aac724-5e33-4132-94d0-0295eb7aa433"),
+                            CaretakerId = new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3051),
+                            Enclosure = 3,
+                            Name = "Zoe",
+                            Species = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("c7006ec8-7ae1-4e66-8ad6-e5b05e368b69"),
+                            CaretakerId = new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3054),
+                            Enclosure = 0,
+                            Name = "Joe",
+                            Species = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("1cfad69b-834e-47bc-ab33-a31544d171d7"),
+                            CaretakerId = new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"),
+                            DateOfBirth = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3057),
+                            Enclosure = 0,
+                            Name = "Janusz",
+                            Species = 4
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.AvailableTicket", b =>
@@ -65,25 +103,25 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ba0e8b56-7429-41cd-a3c6-848d539cc730"),
+                            Id = new Guid("d7b9141d-7d19-4131-83cb-4aa905ddc0ca"),
                             Enclosure = 0,
                             Price = 1500.0
                         },
                         new
                         {
-                            Id = new Guid("de2bf75e-7300-4c29-8a5c-e457037bfaf3"),
+                            Id = new Guid("5a03ce0b-b477-477c-ab59-d88bd4bca3b0"),
                             Enclosure = 1,
                             Price = 2400.0
                         },
                         new
                         {
-                            Id = new Guid("e9442f28-227e-4829-8601-bf3ef116f8d4"),
+                            Id = new Guid("14160af4-c8e4-4729-bf8e-b12d7531a645"),
                             Enclosure = 2,
                             Price = 1200.0
                         },
                         new
                         {
-                            Id = new Guid("89db1c2a-706c-4079-af5c-fa7f9cbd6ac9"),
+                            Id = new Guid("3f589716-5814-470f-ab6d-5df6970a005b"),
                             Enclosure = 3,
                             Price = 3000.0
                         });
@@ -91,9 +129,9 @@ namespace Api.Migrations
 
             modelBuilder.Entity("Api.Entities.Caretaker", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -106,6 +144,20 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Caretakers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a39527b0-8e2e-411a-8ecf-167fbd84ab40"),
+                            FirstName = "Albert",
+                            LastName = "Szybkipuls"
+                        },
+                        new
+                        {
+                            Id = new Guid("7a58bd01-2f55-4177-934f-5c31aad22218"),
+                            FirstName = "Norbert",
+                            LastName = "Firanka"
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Ticket", b =>
@@ -131,6 +183,32 @@ namespace Api.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Tickets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7da223f0-26cb-4e00-a811-3c862cc13ad1"),
+                            Date = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3093),
+                            Enclosure = 1,
+                            Price = 14.5,
+                            UserId = new Guid("9da51020-1be3-4f8c-bace-d6d51a472082")
+                        },
+                        new
+                        {
+                            Id = new Guid("e8520710-2754-4bf3-98f5-de97090d9cfd"),
+                            Date = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3099),
+                            Enclosure = 2,
+                            Price = 16.5,
+                            UserId = new Guid("9da51020-1be3-4f8c-bace-d6d51a472082")
+                        },
+                        new
+                        {
+                            Id = new Guid("85d4a056-970b-4bd6-b247-9a81499cf88f"),
+                            Date = new DateTime(2023, 11, 25, 12, 42, 0, 104, DateTimeKind.Local).AddTicks(3101),
+                            Enclosure = 3,
+                            Price = 17.5,
+                            UserId = new Guid("f1a6610b-655a-4b3c-a88e-8431ea67ce9b")
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.User", b =>
@@ -157,6 +235,24 @@ namespace Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("9da51020-1be3-4f8c-bace-d6d51a472082"),
+                            Email = "skunks@skunks.com",
+                            IsAdmin = false,
+                            Password = "haslo123",
+                            Username = "skunksior"
+                        },
+                        new
+                        {
+                            Id = new Guid("f1a6610b-655a-4b3c-a88e-8431ea67ce9b"),
+                            Email = "czad@man.com",
+                            IsAdmin = true,
+                            Password = "password",
+                            Username = "czadoman"
+                        });
                 });
 
             modelBuilder.Entity("Api.Entities.Animal", b =>

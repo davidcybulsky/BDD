@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.X86;
 
 namespace Api.Entities;
 
@@ -44,33 +46,113 @@ public class SafariContext : DbContext
                 Enclosure = Enclosure.WESTERN
             }
         );
-        /*
+
+        var caretaker1Id = Guid.NewGuid();
+        var caretaker2Id = Guid.NewGuid();
+        var caretaker1 = new Caretaker()
+        {
+            Id = caretaker1Id,
+            FirstName = "Albert",
+            LastName = "Szybkipuls",
+        };
+        var caretaker2 = new Caretaker()
+        {
+            Id = caretaker2Id,
+            FirstName = "Norbert",
+            LastName = "Firanka",
+        };
+        var caretakers = new List<Caretaker>() { caretaker1, caretaker2 };
+
+        modelBuilder.Entity<Caretaker>().HasData(caretakers);
+
         modelBuilder.Entity<Animal>().
             HasData(
             new Animal()
             {
                 Id = Guid.NewGuid(),
                 Name = "Tony",
-                Species = Species.Lion
+                DateOfBirth = DateTime.Now,
+                Species = Species.Lion,
+                Enclosure = Enclosure.SOUTHERN,
+                CaretakerId = caretaker1Id
             },
             new Animal()
             {
                 Id = Guid.NewGuid(),
                 Name = "Zoe",
-                Species = Species.Zebra
+                DateOfBirth = DateTime.Now,
+                Species = Species.Elephant,
+                Enclosure = Enclosure.WESTERN,
+                CaretakerId = caretaker1Id
             },
             new Animal()
             {
                 Id = Guid.NewGuid(),
                 Name = "Joe",
-                Species = Species.Duck
+                DateOfBirth = DateTime.Now,
+                Species = Species.Zebra,
+                Enclosure = Enclosure.NORTHERN,
+                CaretakerId = caretaker2Id
             },
             new Animal()
             {
                 Id = Guid.NewGuid(),
                 Name = "Janusz",
-                Species = Species.Lion
-            });
-        */
+                DateOfBirth = DateTime.Now,
+                Species = Species.Duck,
+                Enclosure = Enclosure.NORTHERN,
+                CaretakerId = caretaker2Id
+            }
+        );
+
+        var user1Id = Guid.NewGuid();
+        var user2Id = Guid.NewGuid();
+        var user1 = new User()
+        {
+            Id = user1Id,
+            Username = "skunksior",
+            Email = "skunks@skunks.com",
+            Password = "haslo123",
+            IsAdmin = false
+        };
+        var user2 = new User()
+        {
+            Id = user2Id,
+            Username = "czadoman",
+            Email = "czad@man.com",
+            Password = "password",
+            IsAdmin = true
+        };
+        var users = new List<User>() { user1, user2 };
+
+        modelBuilder.Entity<User>().HasData(users);
+
+        modelBuilder.Entity<Ticket>().HasData(
+            new Ticket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 14.50,
+                Date = DateTime.Now,
+                Enclosure = Enclosure.SOUTHERN,
+                UserId = user1Id
+            },
+            new Ticket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 16.50,
+                Date = DateTime.Now,
+                Enclosure = Enclosure.EASTERN,
+                UserId = user1Id
+            },
+            new Ticket()
+            {
+                Id = Guid.NewGuid(),
+                Price = 17.50,
+                Date = DateTime.Now,
+                Enclosure = Enclosure.WESTERN,
+                UserId = user2Id
+            }
+        );
+         
     }
 }
