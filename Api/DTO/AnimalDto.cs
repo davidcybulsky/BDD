@@ -1,16 +1,13 @@
-﻿using System.Text.Json.Serialization;
+﻿using Api.Entities;
 
-namespace Api.Entities
+namespace Api.DTO
 {
-    public class Animal
+    public class AnimalDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Species Species { get; set; }
         public Enclosure Enclosure { get; set; }
-        [JsonIgnore]
-        public Caretaker Caretaker { get; set; }
         public Guid CaretakerId { get; set; }
     }
 }

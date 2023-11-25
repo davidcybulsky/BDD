@@ -15,9 +15,27 @@ public class UserService : IUserService
         _context = context;
     }
 
+    public async Task<IEnumerable<User>> GetAll()
+    {
+        var users = await _context.Users.Include(u => u.Tickets).ToListAsync();
+        return users;
+    }
+
+    public async Task<User> LogIn(LoginUserDto userDto)
+    {
+        var user = await _context.Users.Where(u => u.Username == userDto.Username).FirstOrDefaultAsync();
+
+        if (userDto.Password != user.Password)
+        {
+            return null;
+        }
+
+        return user;
+    }
+
     public async Task<User> RegisterUser(RegisterUserDto userDto)
     {
-        if(!userDto.Email.Contains("@"))
+        if (!userDto.Email.Contains("@"))
         {
             return null;
         }
@@ -37,16 +55,16 @@ public class UserService : IUserService
         return user;
     }
 
-
-    public async Task<User> LogIn(LoginUserDto userDto)
+    public async Task<User> DeleteUser(LoginUserDto userDto)
     {
-        var user = await _context.Users.Where(u => u.Username == userDto.Username).FirstOrDefaultAsync();
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userDto.Username);
 
-        if(userDto.Password != user.Password)
+        if (user is not null && user.Password == userDto.Password)
         {
-            return null;
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return user;
         }
-
-        return user;
+        return null;
     }
 }
