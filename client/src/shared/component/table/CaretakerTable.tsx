@@ -1,29 +1,52 @@
-import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Table, Button } from "react-bootstrap";
 import { CaretakerListType, CaretakerType } from '../../lib/types';
 import CaretakerEditModal from '../modal/CaretakerEditModal';
 import { initCaretaker, initCaretakerList } from '../../../util/util';
+import useFetch from '../../../hook/useFetch';
+import useDelete from '../../../hook/useDelete';
 
 type CaretakerTableType = {
     caretakerList : CaretakerListType
 }
 
 const CaretakerTable = () => {
-    // const { data , loading, error } = useFetch("/test");
     const [editedCaretaker, setEditedCaretaker] = useState<CaretakerType>(initCaretaker);
     const [toggleEditModal, setEditModal] = useState<boolean>(false);
     const [caretakerList, setCaretakerList] = useState(initCaretakerList);
+    const [state, fetch] = useFetch('/caretaker');
+    const [reFetch, setReFetch] = useState<boolean>(false);
+    const [_, deleteData] = useDelete(`/caretaker/1`);
+
+    useEffect(() => {
+        fetch()
+    },[reFetch])
+
+    useEffect(() => {
+        if(state.data) {
+            const caretakers = state.data;
+            caretakers.forEach((caretaker : any) => {
+                delete caretaker.animals;
+            })
+            setCaretakerList(caretakers)
+        }  
+    },[state])
 
     const handleCaretakerOnEdit = (caretaker : CaretakerType) => {
         setEditedCaretaker(caretaker)
         setEditModal(true)
     }
     const handleCaretakerOnDelete = (caretaker : CaretakerType) => {
-        
+        deleteData(`/caretaker/${caretaker.id}`)
+        triggerReFetch()
     }
     const handleModalHide = () => {
         setEditModal(false)
+    }
+    const triggerReFetch = () => {
+        setTimeout(() => {
+            setReFetch(!reFetch);
+        },0)
     }
     return (
         <>
@@ -38,11 +61,13 @@ const CaretakerTable = () => {
             </thead>
             <tbody>
                 {
-                    caretakerList.map((caretaker : any, index : any) => (
+                    caretakerList.map((caretaker : CaretakerType, index : number) => (
                         <tr>
                             {
-                                (Object.keys(caretaker) as Array<keyof any>).map((key : any) => (
-                                    <td key={key}>{caretaker[key]}</td>
+                                (Object.keys(caretaker) as Array<keyof CaretakerType>).map((key : keyof CaretakerType) => (
+                                    <>
+                                        { key !== "id" ?  <td key={key + index}>{caretaker[key]}</td> : null }
+                                    </>
                                 ))
                             }
                             {
@@ -67,7 +92,9 @@ const CaretakerTable = () => {
         <CaretakerEditModal 
             toggleEditModal={toggleEditModal}
             handleModalHide={handleModalHide}
-            caretaker={editedCaretaker}/>
+            caretaker={editedCaretaker}
+            triggerReFetch={triggerReFetch}
+        />
         </>
     )
 }

@@ -50,33 +50,5 @@ export const dataEnclosureConvert : { [key : string] : string} = {
     "3" : "WESTERN"
 }
 
-// export const animalList : AnimalListType = [
-//     {
-//         id : 1,
-//         name : "Miś",
-//         specie : "BISON",
-//         caretaker : "Janusz Kowalski",
-//         enclosure : "NORTHERN"
-//     }, 
-//     {
-//         id : 2,
-//         name : "Wilk Max",
-//         specie : "WOLF",
-//         caretaker : "Michał Nowak",
-//         enclosure : "SOUTHERN"
-//     }
-// ]
 export const safari = ["NORTHERN", "SOUTHERN", "EASTERN", "WESTERN"];
 export const species = ["DUCK", "BISON", "WOLF", "EAGLE","MOOSE"];
-// export const caretakers = [
-//     {
-//         "id" : 1,
-//         "name" : "Janusz",
-//         "surename" : "Kowalski",
-//     },
-//     {
-//         "id" : 2,
-//         "name" : "Michał",
-//         "surename" : "Nowak"
-//     }
-// ]

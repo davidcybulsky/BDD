@@ -3,6 +3,7 @@ import Register from './page/register/Register';
 import Login from './page/login/Login';
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AuthProvider from './context/AuthProvider';
+import CaretakerTable from './shared/component/table/CaretakerTable';
 
 function App() {
 
@@ -25,6 +26,12 @@ function App() {
         <Home/>
       )
     }
+    // {
+    //   path: "/caretaker",
+    //   element : (
+    //     <CaretakerTable/>
+    //   )
+    // }
 
   ])
 

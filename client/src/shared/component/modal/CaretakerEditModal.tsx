@@ -2,22 +2,30 @@ import React, { useEffect, useState } from 'react'
 import { Modal, ModalBody, ModalHeader, Form, Stack, Button } from 'react-bootstrap'
 import { CaretakerType } from '../../lib/types'
 import { initCaretaker } from '../../../util/util'
-
+import usePut from '../../../hook/usePut'
 type CaretakerEditModalType = {
     toggleEditModal : boolean,
     handleModalHide : () => void,
-    caretaker : CaretakerType
+    caretaker : CaretakerType,
+    triggerReFetch : () => void
 }
 
-const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker} : CaretakerEditModalType) => {
+const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker, triggerReFetch} : CaretakerEditModalType) => {
     const [editedCaretaker, setEditedCaretaker] = useState<CaretakerType>(initCaretaker);
+    const [_ , putData] = usePut({
+        "url" : `/caretaker/${caretaker.id}`,
+        "body" : editedCaretaker
+    });
 
     useEffect(() => {
         setEditedCaretaker(caretaker);
     },[caretaker])
 
     const handleSubmitEditCaretaker = () => {
-        
+        console.log(editedCaretaker);
+        putData();
+        handleModalHide();
+        triggerReFetch();
     }
     const handleModalHideAndClearData = () => {
         setEditedCaretaker(initCaretaker);
@@ -31,14 +39,14 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker} : Car
             <ModalBody>
                 <Form>
                     <Form.Group className="mb-3">
-                            <Form.Label htmlFor='caretakerNameLabel'>
+                            <Form.Label htmlFor='caretakerNameLabel' label="caretakerNameLabel">
                                 Name
                             </Form.Label>
                             <Form.Control
                                 id='caretakerNameLabel'
                                 type="text"
                                 placeholder='Name'
-                                value={caretaker.firstName}
+                                value={editedCaretaker.firstName}
                                 onChange={(e) => setEditedCaretaker({ ...editedCaretaker, firstName : e.target.value})}
                             />
                     </Form.Group>
@@ -50,12 +58,12 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker} : Car
                                 id='caretakerSurenameLabel'
                                 type="text"
                                 placeholder='Name'
-                                value={caretaker.lastName}
+                                value={editedCaretaker.lastName}
                                 onChange={(e) => setEditedCaretaker({ ...editedCaretaker, lastName : e.target.value})}
                             />
                     </Form.Group>
                     <Stack direction='horizontal' gap={2} className='justify-content-center'>
-                        <Button type='submit' onClick={handleSubmitEditCaretaker}>
+                        <Button onClick={handleSubmitEditCaretaker}>
                             Submit
                         </Button>
                         <Button onClick={handleModalHideAndClearData} variant='outline-primary'>
