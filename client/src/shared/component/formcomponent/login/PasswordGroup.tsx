@@ -3,17 +3,18 @@ import { Form, FloatingLabel } from 'react-bootstrap'
 
 type PasswordGroupType = {
     password : string,
-    handlePasswordChange : (event : React.ChangeEvent<HTMLInputElement>) => void
+    handlePasswordChange : (event : React.ChangeEvent<HTMLInputElement>) => void,
+    id : string
 }
 
-const PasswordGroup = ({ password, handlePasswordChange} : PasswordGroupType) => {
+const PasswordGroup = ({ password, handlePasswordChange, id} : PasswordGroupType) => {
   return (
     <Form.Group className='col-md-6 mx-auto'>
         <FloatingLabel
             label='password'
         >
             <Form.Control 
-                id='passwordLabel'
+                 id={id}
                 type='password' 
                 placeholder='password' 
                 value={password} 

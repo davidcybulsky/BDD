@@ -3,10 +3,11 @@ import { Form, FormGroup, Button, FloatingLabel, Container, Row, Col } from 'rea
 
 type LoginGroupType = {
     login : string | undefined, 
-    handleLoginChange :  (event : React.ChangeEvent<HTMLInputElement>) => void  
+    handleLoginChange :  (event : React.ChangeEvent<HTMLInputElement>) => void,
+    id : string
 }
 
-const LoginGroup = ({ login, handleLoginChange} : LoginGroupType) => {
+const LoginGroup = ({ login, handleLoginChange, id} : LoginGroupType) => {
 
 
     return (
@@ -15,7 +16,7 @@ const LoginGroup = ({ login, handleLoginChange} : LoginGroupType) => {
                 label='login'
             >
                 <Form.Control 
-                    id="loginLabel"
+                     id={id}
                     type="text"
                     placeholder='Enter login'
                     value={login}

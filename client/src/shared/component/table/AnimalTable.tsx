@@ -36,8 +36,11 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
         setEditModal(true);
     }
     const handleAnimalOnDelete = (animal : Animal) => {
-        deleteData(`/animal/${animal.id}`);
-        triggerReFetching();
+        const performDeleteData = async() => {
+           await deleteData(`/animal/${animal.id}`);
+           triggerReFetching();
+        }
+        performDeleteData()
     }
     const convertSpeciesFromNumberToString = (animals : AnimalListType) => {
         const animalToConvert = [...animals];
@@ -62,7 +65,7 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
     }
     return (
     <>
-        <Table>
+        <Table id="animal-tbl">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -101,12 +104,12 @@ const AnimalTable = ( { isAdmin } : AnimalTableType) => {
                                 isAdmin && (
                                     <>
                                         <td>
-                                            <Button onClick={() => handleAnimalOnEdit(animal)}>
+                                            <Button onClick={() => handleAnimalOnEdit(animal)} id="animal-edit-btn">
                                                 Edit
                                             </Button>
                                         </td>
                                         <td>
-                                            <Button onClick={() => handleAnimalOnDelete(animal)}>
+                                            <Button onClick={() => handleAnimalOnDelete(animal)} id="animal-delete-btn">
                                                 Delete
                                             </Button>
                                         </td>

@@ -39,18 +39,11 @@ const Home = () => {
 
     return (
         <>
-            {
-                isLoggedIn ? (
-                    <>
-                        <NavHome handleOnDisplayChange={handleOnDisplayChange} handleBuyTicket={handleBuyTicket}/>
-                        { displayTable }
-                        <TicketModal toggleModal={toggleModal} handleModalHide={() => setToggleModal(false)}/>
-                    </>
-                ) : 
-                <div>
-                    Unauthorized!
-                </div>
-            }
+            <>
+                <NavHome handleOnDisplayChange={handleOnDisplayChange} handleBuyTicket={handleBuyTicket}/>
+                { displayTable }
+                <TicketModal toggleModal={toggleModal} handleModalHide={() => setToggleModal(false)}/>
+            </>
           
         </>
     )

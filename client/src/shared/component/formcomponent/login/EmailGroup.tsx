@@ -13,7 +13,7 @@ const EmailGroup = ({ handleEmailChange, email } : EmailGroupType) => {
                 label='email'
             >
                 <Form.Control
-                    id='emailLabel'
+                    id='email-register-input'
                     type="email"
                     placeholder='Email'
                     value={email}

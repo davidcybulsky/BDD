@@ -29,6 +29,7 @@ const initAnimalConverted : AnimalTypeConverted = {
 const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFetching } : AnimalEditModalType) => {
     const [editedAnimal, setEditedAnimal] = useState<Animal>(animal);
     const [animalToSend, setAnimalToSend] = useState<AnimalTypeConverted>(initAnimalConverted);
+    const [errMsg, setErrMsg] = useState<string>('');
     const [state, putData] = usePut({ url : `/animal/${editedAnimal.id}`, body :  animalToSend });
 
     useEffect(() => {
@@ -37,13 +38,20 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFe
 
     const handleEditAnimalSubmit = () => {
         convertSpeciesAndEnclosureFromStringToNumber(editedAnimal);
+        const validateAnimalName = validator()
         console.log(animalToSend)
-        putData();
-        triggerReFetching()
-        handleModalHide();
+        if(validateAnimalName) {
+            const updateData = async () => {
+                await putData();
+                triggerReFetching()
+                handleModalHide();
+            }
+            updateData()
+        } 
     }
     const handleModalHideAndDataClear = () => {
         setEditedAnimal(initAnimal);
+        setErrMsg('')
         handleModalHide();
     }
     const convertSpeciesAndEnclosureFromStringToNumber = (editAnimal : Animal) => {
@@ -57,8 +65,21 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFe
         animalToSend.caretakerId = editAnimal.caretakerId;
         setAnimalToSend(animalToSend);
     }
+    const validator = () => {
+        if(!editedAnimal.name) {
+            setErrMsg("Animal name cannot be empty!")
+            return false
+        }
+        if(editedAnimal.name === animal.name && 
+            editedAnimal.enclosure === animal.enclosure && 
+            editedAnimal.species === animal.species) {
+            setErrMsg("You need to apply some changes!")
+            return false
+        }
+        return true
+    }
     return (
-        <Modal show={toggleEditModal} onHide={handleModalHideAndDataClear}>
+        <Modal show={toggleEditModal} onHide={handleModalHideAndDataClear} id="modal-edit-animal">
             <ModalHeader>
                 Edit Animal
             </ModalHeader>
@@ -69,7 +90,7 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFe
                             Name
                         </Form.Label>
                         <Form.Control
-                            id='nameLabel'
+                            id='nameLabel-Animal'
                             type="text"
                             placeholder='Name'
                             value={editedAnimal.name}
@@ -108,6 +129,11 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFe
                             }
                         </Form.Select>
                     </Form.Group>
+                    {
+                        errMsg ? <div id='edit-Animal-errMsg'>
+                            { errMsg }
+                        </div> : null
+                    }
                     <Stack direction="horizontal" gap={2} className='justify-content-center'>
                         <Button onClick={handleEditAnimalSubmit}>
                             Submit

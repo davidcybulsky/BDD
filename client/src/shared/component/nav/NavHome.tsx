@@ -21,8 +21,8 @@ const NavHome = ({ handleOnDisplayChange, handleBuyTicket } : NavHomeType ) => {
     return (
         <Navbar bg='dark' data-bs-theme="dark">
             <Nav className='me-auto ms-5'>
-                <NavLink onClick={() => {handleOnDisplayChange('animal')}}>Animal</NavLink>
-                <NavLink onClick={() => {handleOnDisplayChange('caretaker')}}>Caretaker</NavLink>
+                <NavLink id="nav-animal" onClick={() => {handleOnDisplayChange('animal')}}>Animal</NavLink>
+                <NavLink id="nav-caretaker" onClick={() => {handleOnDisplayChange('caretaker')}}>Caretaker</NavLink>
             </Nav>
             <Button onClick={handleBuyTicket} className='me-3'>
                 Buy ticket

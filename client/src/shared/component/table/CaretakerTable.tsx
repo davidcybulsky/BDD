@@ -50,7 +50,7 @@ const CaretakerTable = () => {
     }
     return (
         <>
-        <Table>
+        <Table id="caretaker-tbl">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -73,12 +73,12 @@ const CaretakerTable = () => {
                             {
                                 <>
                                     <td>
-                                        <Button onClick={() => handleCaretakerOnEdit(caretaker)}>
+                                        <Button onClick={() => handleCaretakerOnEdit(caretaker)} id="caretaker-edit-btn">
                                             Edit
                                         </Button>
                                     </td>
                                     <td>
-                                        <Button onClick={() => handleCaretakerOnDelete(caretaker)}>
+                                        <Button onClick={() => handleCaretakerOnDelete(caretaker)} id="caretaker-delete-btn">
                                             Delete
                                         </Button>
                                     </td>

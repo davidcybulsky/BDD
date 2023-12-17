@@ -12,6 +12,7 @@ type CaretakerEditModalType = {
 
 const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker, triggerReFetch} : CaretakerEditModalType) => {
     const [editedCaretaker, setEditedCaretaker] = useState<CaretakerType>(initCaretaker);
+    const [errMsg, setErrMsg] = useState<string>('');
     const [_ , putData] = usePut({
         "url" : `/caretaker/${caretaker.id}`,
         "body" : editedCaretaker
@@ -22,17 +23,39 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker, trigg
     },[caretaker])
 
     const handleSubmitEditCaretaker = () => {
-        console.log(editedCaretaker);
-        putData();
-        handleModalHide();
-        triggerReFetch();
+        const performUpdate = async() => {
+            await putData()
+            triggerReFetch();
+            setErrMsg('')
+            handleModalHide();
+        }
+        const isValidated = validator();
+        if(isValidated) {
+            performUpdate()
+        }
     }
     const handleModalHideAndClearData = () => {
         setEditedCaretaker(initCaretaker);
+        setErrMsg('')
         handleModalHide()
     }
+    const validator = () => {
+        if(!editedCaretaker.firstName && !editedCaretaker.lastName) {
+            setErrMsg("Both Name and Surename cannot be empty!")
+            return false;
+        }
+        if(!editedCaretaker.firstName) {
+            setErrMsg("Name cannot be empty!")
+            return false
+        } else if(!editedCaretaker.lastName) {
+            setErrMsg("Surename cannot be empty!")
+            return false;
+        } else {
+            return true;
+        }
+    }
     return (
-        <Modal show={toggleEditModal} onHide={handleModalHide}>
+        <Modal show={toggleEditModal} onHide={handleModalHide} id="modal-edit-caretaker">
             <ModalHeader>
                 Edit caretaker
             </ModalHeader>
@@ -62,7 +85,12 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker, trigg
                                 onChange={(e) => setEditedCaretaker({ ...editedCaretaker, lastName : e.target.value})}
                             />
                     </Form.Group>
-                    <Stack direction='horizontal' gap={2} className='justify-content-center'>
+                    {
+                        errMsg ? <div id="edit-Caretaker-errMsg">
+                            { errMsg }
+                        </div> : null
+                    }
+                    <Stack direction='horizontal' gap={2} className='justify-content-center' >
                         <Button onClick={handleSubmitEditCaretaker}>
                             Submit
                         </Button>

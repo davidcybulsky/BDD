@@ -13,6 +13,7 @@ import { AuthContext } from '../../context/AuthProvider'
 import { UserTypeCnt } from '../../context/AuthProvider'
 const Register = () => {
   const [user ,setUser] = useState<UserTypeCnt>(initUser);
+  const [errMsg, setErrMsg] = useState<string>('');
   const { login ,logout, ...rest  } = useContext(AuthContext);
   const navigate = useNavigate();
   const [state,post] = usePost({ 
@@ -30,12 +31,31 @@ const Register = () => {
       setUser({...user, password : event.target.value});
   }
   const handleOnRegister = () => {
-    post()
-        .then(() => {
-            console.log(state)
-            login(user);
-        })
-    navigate('/app')
+    const isValidated = validate()
+    if(isValidated) {
+        post()
+            .then(() => {
+                console.log(state)
+                login(user);
+            })
+        navigate('/app')
+    }
+  }
+  const validate = () => {
+        if(user && user.email && user.password && user.username) {
+            if(!user.email.includes("@")) {
+                setErrMsg("Email must contain '@' !")
+                return false
+            }
+            if(user.password.length <= 5) {
+                setErrMsg("Password must contain at least 6 characters")
+                return false;
+            }
+            return true;
+        } else {
+            setErrMsg("Values cannot be empty!")
+            return false;
+        }
   }
   return (
     <div className='registerForm_master'>
@@ -50,13 +70,20 @@ const Register = () => {
                     <EmailGroup handleEmailChange={handleEmailChange} email={user.email}/>
                 </Row>
                 <Row className="mb-4">
-                    <LoginGroup handleLoginChange={handleLoginChange} login={user.username!}/>
+                    <LoginGroup handleLoginChange={handleLoginChange} login={user.username!} id="login-register-input"/>
                 </Row>
                 <Row className='mb-4'>
-                    <PasswordGroup handlePasswordChange={handlePasswordChange} password={user.password}/>
+                    <PasswordGroup handlePasswordChange={handlePasswordChange} password={user.password} id="password-register-input"/>
                 </Row>
+                {
+                    errMsg != '' ? (
+                        <div id='errMsg-Register'>
+                        { errMsg }
+                        </div>
+                    ) : null
+                }
                     <Stack direction='horizontal' gap={2} className='justify-content-center'>
-                        <Button onClick={handleOnRegister}>
+                        <Button onClick={handleOnRegister} id="">
                             Register
                         </Button>
                     </Stack>
