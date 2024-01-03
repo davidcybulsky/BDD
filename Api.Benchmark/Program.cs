@@ -11,6 +11,9 @@ namespace Api.Benchmark
         {
             Console.WriteLine("Hello, World!");
             BenchmarkRunner.Run<AnimalServiceBenchmark>();
+            BenchmarkRunner.Run<CaretakerServiceBenchmark>();
+            BenchmarkRunner.Run<TicketServiceBenchmark>();
+            BenchmarkRunner.Run<UserServiceBenchmark>();
         }
     }
 }

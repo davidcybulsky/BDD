@@ -12,85 +12,79 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Benchmark
 {
-    public class AnimalServiceBenchmark
+    public class CaretakerServiceBenchmark
     {
         private readonly SafariContext _context;
-        private readonly AnimalService _animalService;
+        private readonly CaretakerService _caretakerService;
 
+        private readonly Caretaker _caretaker;
         private readonly Animal _animal;
         private readonly Guid _guid;
+        private readonly Guid _guid2;
 
-        public AnimalServiceBenchmark()
+
+        public CaretakerServiceBenchmark()
         {
             var options = new DbContextOptionsBuilder<SafariContext>()
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
 
             _context = new SafariContext(options);
-            _animalService = new AnimalService(_context);
+            _caretakerService = new CaretakerService(_context);
 
             _guid = Guid.NewGuid();
+            _guid2 = Guid.NewGuid();
             _animal = new Animal
             {
-                Id = _guid,
+                Id = _guid2,
                 Name = "Tony",
                 DateOfBirth = DateTime.Now,
                 Species = Species.Lion,
                 Enclosure = Enclosure.SOUTHERN,
                 CaretakerId = Guid.NewGuid()
             };
-        }
-
-        [Benchmark]
-        public void GetAnimal()
-        {
-            _animalService.GetAnimal(_guid);
-        }
-
-        [Benchmark]
-        public void GetAnimals()
-        {
-            _animalService.GetAnimals();
-        }
-
-        [Benchmark]
-        public void CreateAnimal()
-        {
-            _animalService.CreateAnimal(_animal);
-        }
-
-        [Benchmark]
-        public void UpdateAnimal()
-        {
+            _caretaker = new Caretaker
+            {
+                Id = _guid,
+                FirstName = "George",
+                LastName = "Washington",
+                Animals = new List<Animal>
+                {
+                    _animal
+                }
+            };
             
-            _animalService.UpdateAnimal(_guid, _animal);
         }
 
         [Benchmark]
-        public void DeleteAnimal()
+        public void ReadById()
         {
-            _animalService.DeleteAnimal(_guid);
+            _caretakerService.ReadById(_guid);
         }
 
         [Benchmark]
-        public void GetAnimalsBySpecies()
+        public void ReadAll()
         {
-            _animalService.GetAnimalsBySpecies(Species.Lion);
+            _caretakerService.Read();
         }
 
         [Benchmark]
-        public void GetAnimalsByCaretakerId()
+        public void Create()
         {
-            _animalService.GetAnimalsByCaretakerId(_guid);
+            _caretakerService.Create(_caretaker);
         }
 
         [Benchmark]
-        public void GetAnimalsByEnclosure()
+        public void Update()
         {
-            _animalService.GetAnimalsByEnclosure(Enclosure.NORTHERN);
+
+            _caretakerService.Update(_guid, _caretaker);
         }
 
-
-
+        [Benchmark]
+        public void Delete()
+        {
+            _caretakerService.Delete(_guid);
+        }
     }
 }
