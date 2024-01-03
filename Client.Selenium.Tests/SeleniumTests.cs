@@ -28,7 +28,7 @@ public class SeleniumTests : IDisposable
         passwordInput.SendKeys(password);
         var loginButton = _driver.FindElement(By.Id("login-btn"));
         loginButton.Click();
-        Thread.Sleep(10000);
+        Thread.Sleep(3000);
 
         //Assert
         _driver.Url.Should().Be(homePageUrl);
@@ -175,7 +175,7 @@ public class SeleniumTests : IDisposable
         passwordInput.SendKeys(password);
         var loginButton = _driver.FindElement(By.Id("login-btn"));
         loginButton.Click();
-        Thread.Sleep(10000);
+        Thread.Sleep(3000);
 
         var logoutButton = _driver.FindElement(By.Id("logout-btn"));
         logoutButton.Click();
@@ -199,7 +199,7 @@ public class SeleniumTests : IDisposable
         passwordInput.SendKeys(password);
         var loginButton = _driver.FindElement(By.Id("login-btn"));
         loginButton.Click();
-        Thread.Sleep(10000);
+        Thread.Sleep(3000);
 
         var navCaretakerButton = _driver.FindElement(By.Id("nav-caretaker"));
         navCaretakerButton.Click();
@@ -225,7 +225,7 @@ public class SeleniumTests : IDisposable
         passwordInput.SendKeys(password);
         var loginButton = _driver.FindElement(By.Id("login-btn"));
         loginButton.Click();
-        Thread.Sleep(10000);
+        Thread.Sleep(3000);
 
         var navCaretakerButton = _driver.FindElement(By.Id("nav-caretaker"));
         navCaretakerButton.Click();
