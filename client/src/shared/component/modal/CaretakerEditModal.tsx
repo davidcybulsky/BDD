@@ -91,7 +91,7 @@ const CaretakerEditModal = ({ toggleEditModal, handleModalHide, caretaker, trigg
                         </div> : null
                     }
                     <Stack direction='horizontal' gap={2} className='justify-content-center' >
-                        <Button onClick={handleSubmitEditCaretaker}>
+                        <Button onClick={handleSubmitEditCaretaker} id="editCaretakerSubmit">
                             Submit
                         </Button>
                         <Button onClick={handleModalHideAndClearData} variant='outline-primary'>

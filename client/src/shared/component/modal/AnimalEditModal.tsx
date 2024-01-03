@@ -135,7 +135,7 @@ const AnimalEditModal = ({ toggleEditModal, handleModalHide, animal, triggerReFe
                         </div> : null
                     }
                     <Stack direction="horizontal" gap={2} className='justify-content-center'>
-                        <Button onClick={handleEditAnimalSubmit}>
+                        <Button onClick={handleEditAnimalSubmit} id="animal-edit-submit">
                             Submit
                         </Button>
                         <Button onClick={handleModalHideAndDataClear} variant="outline-primary">

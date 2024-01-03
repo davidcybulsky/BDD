@@ -38,6 +38,11 @@ builder.Services.AddDbContext<SafariContext>(options =>
     options.UseSqlite(configuration.GetConnectionString("Default"));
 });
 
+using(var db = builder.Services.BuildServiceProvider().GetService<SafariContext>())
+{
+    db!.Database.Migrate();
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
