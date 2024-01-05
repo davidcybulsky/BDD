@@ -83,7 +83,7 @@ const Register = () => {
                     ) : null
                 }
                     <Stack direction='horizontal' gap={2} className='justify-content-center'>
-                        <Button onClick={handleOnRegister} id="">
+                        <Button onClick={handleOnRegister} id="register-btn">
                             Register
                         </Button>
                     </Stack>

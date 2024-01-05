@@ -24,10 +24,10 @@ const NavHome = ({ handleOnDisplayChange, handleBuyTicket } : NavHomeType ) => {
                 <NavLink id="nav-animal" onClick={() => {handleOnDisplayChange('animal')}}>Animal</NavLink>
                 <NavLink id="nav-caretaker" onClick={() => {handleOnDisplayChange('caretaker')}}>Caretaker</NavLink>
             </Nav>
-            <Button onClick={handleBuyTicket} className='me-3'>
+            <Button onClick={handleBuyTicket} className='me-3' id="buyticker-btn">
                 Buy ticket
             </Button>
-            <Button onClick={handleOnLogout} className='me-5'>
+            <Button onClick={handleOnLogout} className='me-5' id='logout-btn'>
                 Logout
             </Button>
             
