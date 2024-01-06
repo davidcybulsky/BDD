@@ -5,15 +5,19 @@ export let options = {
     insecureSkipTLSVerify: true,
     noConnectionReuse: false,
     stages: [
+        { duration: '1m', target: 10 },
+        { duration: '1m', target: 10 },
+        { duration: '10s', target: 100 },
         { duration: '1m', target: 100 },
-        { duration: '2m', target: 100 },
+        { duration: '1m', target: 10 },
+        { duration: '1m', target: 10 },
+        { duration: '10s', target: 200 },
         { duration: '1m', target: 200 },
-        { duration: '2m', target: 200 },
+        { duration: '1m', target: 10 },
+        { duration: '1m', target: 10 },
+        { duration: '10s', target: 300 },
         { duration: '1m', target: 300 },
-        { duration: '2m', target: 300 },
-        { duration: '1m', target: 400 },
-        { duration: '2m', target: 400 },
-        { duration: '4m', target: 0 },
+        { duration: '1m', target: 0 },
     ]
 };
 
@@ -27,7 +31,7 @@ const caretakerPayload = JSON.stringify({
 
 export default () => {
 
-    
+
 
     http.batch([
         ['GET', `${API_BASE_URL}/animal`],
