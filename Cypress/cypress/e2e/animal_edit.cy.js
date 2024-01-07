@@ -1,4 +1,16 @@
 describe('Edit animal', () => {
+  it('login', () => {
+    cy.visit('http://localhost:3000')
+    cy.get('[id="login-login-input"]').clear().type('Zbyszek')
+    cy.get('[id="password-login-input"]').clear().type('Zbyszek')
+    cy.get('[id="login-btn"]').click()
+    cy.get('[id="logout-btn"]').should('contain.text', 'Logout')
+  })
+  it('logout', () => {
+    cy.visit('/app')
+    cy.get('[id="logout-btn"]').click()
+    cy.get('[id="login-btn"]')
+  })
   it('edit animal page', () => {
     cy.visit('/app')
     cy.get('[id="animal-edit-btn"]').should('contain.text', 'Edit').click({multiple: true, force: true})
